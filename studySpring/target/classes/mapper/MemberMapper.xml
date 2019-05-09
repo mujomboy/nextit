@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.nextit.member.service.impl.MemberMapper">
+
+
+	<sql id="selectMemberWhere">
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="searchType != null and !searchText.isEmpty()">
+				and ${searchType} like '%' || #{searchText} || '%'
+			</if>
+
+			<choose>
+				<when test="searchType != null and !searchText.isEmpty()">
+					and ${searchType} like '%' || #{searchText} || '%'
+				</when>
+				<otherwise>
+
+				</otherwise>
+			</choose>
+			and del_at = 'N'
+		</trim>
+	</sql>
+
+
+	<select id="selectMemberList"
+		parameterType="kr.or.nextit.member.service.MemberSearchVo"
+		resultType="kr.or.nextit.member.service.MemberVo">
+
+
+        select * 
+		from (
+        		select rownum num, mem.*
+        		from(	
+					SELECT
+					seq_no,
+					usr_id,
+					usr_name,
+					usr_email,
+					usr_hp,
+					usr_fax,
+					usr_gender,
+					usr_age,
+					usr_ip,
+					del_at,
+					reg_user,
+					reg_dt,
+					upd_user,
+					upd_dt,
+					usr_pwd
+					FROM
+					tb_com_member
+		
+		
+		<include refid="selectMemberWhere">
+		</include>
+		
+					order by reg_dt desc
+				        ) mem
+				      ) frm
+				where num between #{startRow} and #{endRow}
+
+	</select>
+
+	<select id="selectMemberTotalCnt" parameterType="kr.or.nextit.member.service.MemberSearchVo" resultType="int" >
+		
+		select count(*) totalCnt from tb_com_member
+		<include refid="selectMemberWhere"></include>
+		
+	</select>
+
+	<select id="selectMemberInfo" parameterType="String"
+		resultType="kr.or.nextit.member.service.MemberVo">
+
+		SELECT
+		seq_no,
+		usr_id,
+		usr_name,
+		usr_email,
+		usr_hp,
+		usr_fax,
+		usr_gender,
+		usr_age,
+		usr_ip,
+		del_at,
+		reg_user,
+		reg_dt,
+		upd_user,
+		upd_dt,
+		usr_pwd
+		FROM
+		tb_com_member
+		where seq_no = #{seqNo}
+
+	</select>
+	<insert id="insertMemberInfo"
+		parameterType="kr.or.nextit.member.service.MemberVo">
+		INSERT INTO tb_com_member (
+		seq_no,
+		usr_id,
+		usr_name,
+		usr_email,
+		usr_hp,
+		usr_fax,
+		usr_gender,
+		usr_age,
+		usr_ip,
+		del_at,
+		reg_user,
+		reg_dt,
+		upd_user,
+		upd_dt,
+		usr_pwd
+		) VALUES (
+		SEQ_TB_COM_MEMBER.nextval,
+		#{usrId},
+		#{usrName},
+		#{usrEmail},
+		#{usrHp},
+		#{usrFax},
+		#{usrGender},
+		#{usrAge},
+		#{usrIp},
+		'N',
+		#{usrId},
+		sysdate,
+		#{usrId},
+		sysdate,
+		#{usrPwd}
+		)
+	</insert>
+
+	<update id="updateMemberInfo" parameterType="HashMap">
+
+
+		UPDATE tb_com_member
+		SET
+		usr_name =#{usrName},
+		usr_email =#{usrEmail},
+		usr_hp =#{usrHp},
+		usr_fax =#{usrFax},
+		usr_gender =#{usrGender},
+		usr_age =#{usrAge},
+		usr_ip =#{usrIp},
+		upd_user =#{updUser},
+		upd_dt =sysdate,
+		usr_pwd =#{usrPwd}
+		WHERE
+		seq_no = #{seqNo}
+
+	</update>
+
+	<delete id="deleteMemberInfo" parameterType="String">
+
+
+		DELETE FROM tb_com_member
+		WHERE
+		seq_no =#{seqNo}
+
+	</delete>
+
+	<update id="deleteFlagMemberInfo"
+		parameterType="kr.or.nextit.member.service.MemberSearchVo">
+
+
+		UPDATE tb_com_member
+		SET
+		del_at = 'Y'
+		WHERE
+		seq_no = #{seqNo}
+
+	</update>
+</mapper>
+
