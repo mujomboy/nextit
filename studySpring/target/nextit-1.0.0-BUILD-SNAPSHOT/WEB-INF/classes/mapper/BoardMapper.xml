@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.nextit.board.service.impl.BoardMapper">
+
+	<resultMap type="kr.or.nextit.board.service.BoardVo" id="boardMap">
+		<id property="seqNo" column="seq_no" />
+		<result property="num" column="num"/>
+		<result property="serviceType" column="service_type"/>
+		<result property="title" column="title"/>
+		<result property="contents" column="contents"/>
+		<result property="readCount" column="read_count"/>
+		<result property="usrIp" column="usr_ip"/>
+		<result property="delAt" column="del_at"/>
+		<result property="regUser" column="reg_user"/>
+		<result property="regDt" column="reg_dt"/>
+		<result property="updUser" column="upd_user"/>
+		<result property="updDt" column="upd_dt"/>
+	</resultMap>
+
+	<select id="selectBoardList" parameterType="kr.or.nextit.board.service.BoardSearchVo" resultMap="boardMap">
+
+
+	select rownum num, tboard.* from   
+(    SELECT
+    seq_no,
+    service_type,
+    title,
+    contents,
+    read_count,
+    usr_ip,
+    del_at,
+    reg_user,
+    reg_dt,
+    upd_user,
+    upd_dt
+FROM
+    tb_com_board
+where del_at = 'N'
+order by upd_dt desc) tboard
+
+	</select>
+	
+	<select id="selectBoardInfo" parameterType="String" resultMap="boardMap">
+	
+	select * 
+	from tb_com_board 
+	where seq_no = #{seqNo}
+	
+	</select>
+	
+	
+	<insert id="insertBoardInfo" parameterType="kr.or.nextit.board.service.BoardVo">
+	
+	INSERT INTO tb_com_board (
+	    seq_no,
+	    service_type,
+	    title,
+	    contents,
+	    usr_ip,
+	    reg_user,
+	    upd_user
+	) VALUES (
+	    seq_tb_com_board.nextval,
+	    #{serviceType},
+	    #{title},
+	    #{contents},
+	    #{usrIp},
+	    #{regUser},
+	    #{regUser}
+	)
+
+	</insert>
+	
+	<update id="updateBoardInfoCount" parameterType="String">
+		update tb_com_board 
+		set read_count = read_count + 1
+		where seq_no = #{seqNo}
+	</update>
+	
+	<delete id="deleteBoardInfo" parameterType="HashMap">
+		delete from tb_com_board
+		where seq_no = #{seqNo}
+	
+	</delete>
+</mapper>
