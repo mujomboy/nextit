@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
+	
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>kr.or.nextit</groupId>
-	<artifactId>nextjh</artifactId>
-	<name>jh_project</name>
+	<artifactId>nextit</artifactId>
+	<name>studySpring</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
-	
-	
 	<properties>
+		<!-- maven 환경설정사용시 사용할 변수(properties) 값을 설정 하는 기능 -->
 		<java-version>1.8</java-version>
 		<org.springframework-version>5.1.4.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.9.3</org.aspectj-version>
 		<org.slf4j-version>1.7.26</org.slf4j-version>
 	</properties>
+	
 	
 	<repositories>
 	
@@ -51,7 +52,6 @@
 	</repositories>
 	
 	
-	
 	<dependencies>
 		<!-- Spring -->
 		<dependency>
@@ -71,7 +71,10 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-		
+				
+				
+				
+					
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
 		<dependency>
 		    <groupId>org.springframework</groupId>
@@ -85,8 +88,8 @@
 		    <artifactId>spring-jdbc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-				
-				
+		
+		
 		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
 		<dependency>
 		    <groupId>org.mybatis</groupId>
@@ -126,8 +129,8 @@
 		  <version>11.2.0.2.0</version>
 		</dependency>
 		
+
 		
-				
 		<!--  유틸리티 시작 -->
 		
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
@@ -169,7 +172,6 @@
 		<!--  유틸리티 종료 -->
 		
 		
-				
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
@@ -226,22 +228,24 @@
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
 		</dependency>
-				
+		
 		<!-- https://mvnrepository.com/artifact/org.sitemesh/sitemesh -->
 		<dependency>
 		    <groupId>org.sitemesh</groupId>
 		    <artifactId>sitemesh</artifactId>
 		    <version>3.0.1</version>
 		</dependency>
-		
-		
+
+
 		<!-- Servlet -->
+		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
 		<dependency>
 		    <groupId>javax.servlet</groupId>
 		    <artifactId>javax.servlet-api</artifactId>
 		    <version>3.1.0</version>
 		    <scope>provided</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>jsp-api</artifactId>
@@ -300,5 +304,6 @@
             </plugin>
         </plugins>
     </build>
-    <description>스프링 프레임워크</description>
+    <url>http://nextit.or.kr</url>
+    <description>스프링</description>
 </project>
