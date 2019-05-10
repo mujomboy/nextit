@@ -35,7 +35,7 @@
 				</tr>
 				<tr>
 					<th>비밀번호</th>
-					<td><input type="password" name="userPwd"></td>
+					<td><input type="password" name="userPwd"></td> 
 				</tr>
 				<tr>
 					<th>아이디 기억하기</th>

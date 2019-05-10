@@ -19,7 +19,7 @@
 		<!-- ex) prod.driver, proc.url 등의 키 값과 value -->
 		<!-- 	 prod.driver=oracle -->
 		<!-- 	 prod.url=jdbc; -->
-		<context:property-placeholder location="classpath:/db_home.properties"/>
+		<context:property-placeholder location="classpath:/db.properties"/>
 		
 		<!-- 다중 커넥션사용시 기본적으로 사용할 Datasource 설정을 alias="dataSource" 로 사용 설정 -->
 		<alias name="spring.dataSource" alias="dataSource"/>

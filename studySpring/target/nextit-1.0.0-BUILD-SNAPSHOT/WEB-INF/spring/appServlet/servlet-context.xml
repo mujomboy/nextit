@@ -64,6 +64,18 @@
 	
 	</beans:bean>
 	
+	<!-- 다국어 처리 인터셉터 등록 -->
+	<!-- 세션을 이용한 Locale -->
+	<beans:bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"></beans:bean>
+	
+	<!-- 쿠키를 이용한 Locale -->
+	<!-- <beans:bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver"></beans:bean> -->
+	
+	<interceptors>
+		<beans:bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<beans:property name="paramName" value="language"></beans:property>
+		</beans:bean>
+	</interceptors>
 	
 	<interceptors>
 		<!-- <beans:bean id="testInterceptor" class="kr.or.nextit.interceptor.TestInterceptor"></beans:bean> -->

@@ -19,7 +19,7 @@
 </head>
 
 <body>
-<form action="">
+<form action="/board/boardUpdateProc.do" method="POST">
 <table class="table">
 	<tbody>
   		<tr> <th>넘버</th> <td> <input type="text" name="seqNo" value="${boardInfo.seqNo}" readonly="readonly"></td> </tr>
@@ -41,7 +41,7 @@
   		<tr> <th>수정일</th> <td>${boardInfo.updDt}</td> </tr>
   		<tr>
   			<th>
-  			
+				<button  type="submit"> 수정 </button>  			
   			</th>
   		
   		</tr>
