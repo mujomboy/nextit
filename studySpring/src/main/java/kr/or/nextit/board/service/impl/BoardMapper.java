@@ -20,4 +20,6 @@ public interface BoardMapper {
 	void updateBoardInfoCount(String seqNo) throws Exception;
 	
 	void deleteBoardInfo(HashMap<String, Object> params) throws Exception; 
+	
+	void updateBoardInfo(HashMap<String, Object> params) throws Exception;
 }

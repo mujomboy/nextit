@@ -12,4 +12,6 @@ public interface BoardService {
 	BoardVo selectBoardInfo(String seqNo) throws Exception;
 	
 	void deleteBoardInfo(HashMap<String, Object> params) throws Exception;
+	
+	void updateBoardInfo(HashMap<String, Object> params) throws Exception;
 }

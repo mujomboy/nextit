@@ -77,6 +77,19 @@ order by upd_dt desc) tboard
 		where seq_no = #{seqNo}
 	</update>
 	
+	
+	<update id="updateBoardInfo" parameterType="HashMap">
+		
+	update tb_com_board 
+	set
+	    title = #{title},
+	    contents = #{contents},
+	    upd_user = #{updUser},
+	    upd_dt = sysdate
+	where seq_no = #{seqNo}
+	</update>
+	
+	
 	<delete id="deleteBoardInfo" parameterType="HashMap">
 		delete from tb_com_board
 		where seq_no = #{seqNo}

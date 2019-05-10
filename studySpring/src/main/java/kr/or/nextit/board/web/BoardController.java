@@ -1,9 +1,11 @@
 package kr.or.nextit.board.web;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -121,5 +123,23 @@ public class BoardController {
 		model.addAttribute("boardInfo", boardVo);
 		
 		return "board/boardUpdate";
+	}
+	
+	@RequestMapping(value="/boardUpdateProc.do")
+	public String getBoardUpdateProc(
+			Model model,
+			@RequestParam HashMap<String, Object> params,
+			HttpSession session
+			) throws Exception {
+		
+			params.put("updUser", ((LoginInfoVo)session.getAttribute("loginInfo")).getUsrId());
+			
+		try {			
+			boardService.updateBoardInfo(params);
+			return String.format("redirect:/board/boardViewFront.do?seqNo=%s", (String)params.get("seqNo"));
+		} catch(Exception e) {
+			e.printStackTrace();
+			return String.format("redirect:/board/boardUpdateFront.do?seqNo=%s", (String)params.get("seqNo"));
+		}
 	}
 }

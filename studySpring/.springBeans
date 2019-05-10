@@ -9,6 +9,7 @@
 	<configs>
 		<config>src/main/webapp/WEB-INF/spring/context/root-context.xml</config>
 		<config>src/main/webapp/WEB-INF/spring/context/dataSource-context.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/context/properties-context.xml</config>
 	</configs>
 	<autoconfigs>
 		<config>src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml</config>

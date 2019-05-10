@@ -50,4 +50,10 @@ public class BoardServiceImpl implements BoardService{
 		
 		boardMapper.deleteBoardInfo(params);
 	}
+
+	@Override
+	public void updateBoardInfo(HashMap<String, Object> params) throws Exception {
+
+		boardMapper.updateBoardInfo(params);
+	}
 }

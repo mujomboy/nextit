@@ -10,10 +10,15 @@
 		</layout>
 	</appender>
 	
+	<!-- info < error < debug  레벨이 높을 수록 하위 레벨들 같이 실행-->
 	<!-- Application Loggers -->
 	<logger name="kr.or.nextit">
-		<level value="info" />
+		<level value="debug" />
 	</logger>
+	
+	<logger name="org">
+		<level value="debug" />
+	</logger>	
 	
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+		
+		<!-- spring 환경설정 정보를 properties 파일 에서 읽어 옴 -->
+		<!-- 파일 경로, DB 연결정보, 매일 서버 연결 정보등 -->
+		<!-- 업무 시스템 에서 사용하는 정보를 공통 적으로 관리 하는 환경 설정 -->
+		<!-- ex) prod.driver, proc.url 등의 키 값과 value -->
+		<!-- 	 prod.driver=oracle -->
+		<!-- 	 prod.url=jdbc; -->
+		<context:property-placeholder location="classpath:/db_home.properties"/>
+		
+		<!-- 다중 커넥션사용시 기본적으로 사용할 Datasource 설정을 alias="dataSource" 로 사용 설정 -->
+		<alias name="spring.dataSource" alias="dataSource"/>
+		
+		<bean id="spring.dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+			<property name="driverClassName" value="${dev.driver}"></property>
+			<property name="url" value="${dev.url}"></property>
+			<property name="username" value="${dev.user}"></property>
+			<property name="password" value="${dev.password}"></property>
+		</bean>
+		
+		<bean id="dbcp2.dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+			<property name="driverClassName" value="${jdbc.driver}"></property>
+			<property name="url" value="${jdbc.url}"></property>
+			<property name="username" value="${jdbc.user}"></property>
+			<property name="password" value="${jdbc.password}"></property>
+			<!-- Pool 관련 설정 -->
+			<property name="validationQuery" value="select 1 from dual"></property>
+			<property name="maxTotal" value="300"></property>
+			<property name="maxIdle" value="5"></property>
+			<property name="minIdle" value="4"></property>
+			<property name="defaultAutoCommit" value="false"></property>
+		</bean>
+		
+		<!-- Mybatis 설정 -->
+		<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+			<!-- MyBatis 환경설정 -->
+			<property name="configLocation" value="classpath:/spring-mybatis-config.xml"></property>
+			<!-- spring.DataSource 데이터 베이스 연결 객체를 사용 하겠다 -->
+			<property name="dataSource" ref="dataSource"></property>
+			<!-- 데이터 레이어 질의어(구현체) 작성, "mapper/파일명Mapper.xml" 파일을 읽어옴 -->
+			<property name="mapperLocations" value="classpath*:/mapper/*Mapper.xml"></property>
+		</bean>
+		
+		<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+			<constructor-arg ref="sqlSessionFactory"></constructor-arg>
+		</bean>
+		
+		<!-- Mapper Interface 등록 -->
+		<!-- mapper 스캔 시 어노테이션을 기준으로 스캔을 하겠다 -->
+		<mybatis-spring:scan base-package="kr.or.nextit" annotation="org.apache.ibatis.annotations.Mapper"/>
+</beans>
