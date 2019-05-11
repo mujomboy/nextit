@@ -19,11 +19,249 @@
 
 <title>next it</title>
 
-</head>
+<script>
 
+	window.onload = function(){
+		//----HOVER CAPTION---//	  
+		jQuery(document).ready(function($) {
+			$('.fadeshop').hover(function() {
+				$(this).find('.captionshop').fadeIn(150);
+			}, function() {
+				$(this).find('.captionshop').fadeOut(150);
+			});
+		});
+	}
+	
+</script>
+</head>
 <body>
 
-<h1>index page</h1>
+	<script>attachMain("아직 정해지지 않음", "홈페이지임");</script>
+
+	<!-- STEPS =============================-->
+	<div class="item content">
+		<div class="container toparea">
+			<div class="row text-center">
+				<div class="col-md-4">
+					<div class="col editContent">
+						<!-- <span class="numberstep"><i class="fa fa-shopping-cart"></i></span> -->
+						<h3 class="numbertext">기능 1</h3>
+						<p>내용 들어가는 곳</p>
+					</div>
+					<!-- /.col-md-4 -->
+				</div>
+				<!-- /.col-md-4 col -->
+				<div class="col-md-4 editContent">
+					<div class="col">
+						<!-- <span class="numberstep"><i class="fa fa-gift"></i></span> -->
+						<h3 class="numbertext">기능2</h3>
+						<p>내용 들어가는 곳</p>
+					</div>
+					<!-- /.col -->
+				</div>
+				<!-- /.col-md-4 col -->
+				<div class="col-md-4 editContent">
+					<div class="col">
+						<!-- <span class="numberstep"><i class="fa fa-download"></i></span> -->
+						<h3 class="numbertext">기능 3</h3>
+						<p>내용 들어가는 곳</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+	<!-- LATEST ITEMS =============================-->
+	<section class="item content">
+		<div class="container">
+
+
+			<div class="underlined-title">
+				<div class="editContent">
+					<h1 class="text-center latestitems">LATEST ITEMS</h1>
+				</div>
+				<div class="wow-hr type_short">
+					<span class="wow-hr-h"> <i class="fa fa-star"></i> <i
+						class="fa fa-star"></i> <i class="fa fa-star"></i>
+					</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="productbox">
+						<div class="fadeshop">
+							<div class="captionshop text-center" style="display: none;">
+								<h3>Item Name</h3>
+								<p>This is a short excerpt to generally describe what the
+									item is about.</p>
+								<p>
+									<a href="#" class="learn-more detailslearn"><i
+										class="fa fa-shopping-cart"></i> Purchase</a> <a href="#"
+										class="learn-more detailslearn"><i class="fa fa-link"></i>
+										Details</a>
+								</p>
+							</div>
+							<span class="maxproduct"><img
+								src="<c:url value="images/product1-1.jpg"/>" alt=""></span>
+						</div>
+						<div class="product-details">
+							<a href="#">
+								<h1>Calypso Theme</h1>
+							</a> <span class="price"> <span class="edd_price">$49.00</span>
+							</span>
+						</div>
+					</div>
+				</div>
+				<!-- /.productbox -->
+				<div class="col-md-4">
+					<div class="productbox">
+						<div class="fadeshop">
+							<div class="captionshop text-center" style="display: none;">
+								<h3>Item Name</h3>
+								<p>This is a short excerpt to generally describe what the
+									item is about.</p>
+								<p>
+									<a href="#" class="learn-more detailslearn"><i
+										class="fa fa-shopping-cart"></i> Purchase</a> <a href="#"
+										class="learn-more detailslearn"><i class="fa fa-link"></i>
+										Details</a>
+								</p>
+							</div>
+							<span class="maxproduct"><img
+								src="<c:url value="images/product2.jpg"/>" alt=""></span>
+						</div>
+						<div class="product-details">
+							<a href="#">
+								<h1>FastSell Theme</h1>
+							</a> <span class="price"> <span class="edd_price">$49.00</span>
+							</span>
+						</div>
+					</div>
+				</div>
+				<!-- /.productbox -->
+				<div class="col-md-4">
+					<div class="productbox">
+						<div class="fadeshop">
+							<div class="captionshop text-center" style="display: none;">
+								<h3>Item Name</h3>
+								<p>This is a short excerpt to generally describe what the
+									item is about.</p>
+								<p>
+									<a href="#" class="learn-more detailslearn"><i
+										class="fa fa-shopping-cart"></i> Purchase</a> <a href="#"
+										class="learn-more detailslearn"><i class="fa fa-link"></i>
+										Details</a>
+								</p>
+							</div>
+							<span class="maxproduct"><img
+								src="<c:url value="images/product2-3.jpg" />" alt=""></span>
+						</div>
+						<div class="product-details">
+							<a href="#">
+								<h1>Biscaya Theme</h1>
+							</a> <span class="price"> <span class="edd_price">$49.00</span>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</section>
+
+
+	<!-- BUTTON =============================-->
+	<div class="item content">
+		<div class="container text-center">
+			<a href="shop.html" class="homebrowseitems">Browse All Products
+				<div class="homebrowseitemsicon">
+					<i class="fa fa-star fa-spin"></i>
+				</div>
+			</a>
+		</div>
+	</div>
+	<br />
+
+
+	<!-- AREA =============================-->
+	<div class="item content">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<i class="fa fa-microphone infoareaicon"></i>
+					<div class="infoareawrap">
+						<h1 class="text-center subtitle">General Questions</h1>
+						<p>Want to buy a theme but not sure if it's got all the
+							features you need? Trouble completing the payment? Or just want
+							to say hi? Send us your message and we will answer as soon as
+							possible!</p>
+						<p class="text-center">
+							<a href="#">- Get in Touch -</a>
+						</p>
+					</div>
+				</div>
+				<!-- /.col-md-4 col -->
+				<div class="col-md-4">
+					<i class="fa fa-comments infoareaicon"></i>
+					<div class="infoareawrap">
+						<h1 class="text-center subtitle">Theme Support</h1>
+						<p>Theme support issues prevent the theme from working as
+							advertised in the demo. This is a free and guaranteed service
+							offered through our support forum which is found in each theme.</p>
+						<p class="text-center">
+							<a href="#">- Select Theme -</a>
+						</p>
+					</div>
+				</div>
+				<!-- /.col-md-4 col -->
+				<div class="col-md-4">
+					<i class="fa fa-bullhorn infoareaicon"></i>
+					<div class="infoareawrap">
+						<h1 class="text-center subtitle">Hire Us</h1>
+						<p>If you wish to change an element to look or function
+							differently than shown in the demo, we will be glad to assist
+							you. This is a paid service due to theme support requests solved
+							with priority.</p>
+						<p class="text-center">
+							<a href="#">- Get in Touch -</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- TESTIMONIAL =============================-->
+	<div class="item content">
+		<div class="container">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="slide-text">
+					<div>
+						<h2>
+							<span class="uppercase">Awesome Support</span>
+						</h2>
+						<img
+							src="http://wowthemes.net/demo/salique/salique-boxed/images/temp/avatar2.png"
+							alt="Awesome Support">
+						<p>The support... I can only say it's awesome. You make a
+							product and you help people out any way you can even if it means
+							that you have to log in on their dashboard to sort out any
+							problems that customer might have. Simply Outstanding!</p>
+						<i class="fa fa-star"></i><i class="fa fa-star"></i><i
+							class="fa fa-star"></i><i class="fa fa-star"></i><i
+							class="fa fa-star"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 
 </body>
 </html>

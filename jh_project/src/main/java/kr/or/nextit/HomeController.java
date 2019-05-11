@@ -1,7 +1,5 @@
 package kr.or.nextit;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -24,16 +22,13 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		String page = "home";
 		
-		String formattedDate = dateFormat.format(date);
+		logger.info("메인 페이지 {}.jsp 이동", page);
 		
-		model.addAttribute("serverTime", formattedDate );
 		
-		return "home";
+		return page;
 	}
 	
 }

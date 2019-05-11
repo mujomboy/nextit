@@ -51,4 +51,15 @@
 	
 	</context:component-scan>
 	
+	<interceptors>
+	
+	<!--  로그인 상태 검사 -->
+		<interceptor>
+			<mapping path="/**/*.do"/>
+			<!--  로그인 상태 검사 제외 -->
+			<exclude-mapping path="/login/loginView.do"/>
+			<beans:bean class="kr.or.nextit.interceptor.LogCheckInterceptor" id="logCheckInterceptor"></beans:bean>
+		</interceptor>
+	</interceptors>
+	
 </beans:beans>

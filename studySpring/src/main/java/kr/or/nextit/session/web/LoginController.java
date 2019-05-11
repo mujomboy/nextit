@@ -113,6 +113,7 @@ public class LoginController {
 		RedirectView redirectView = new RedirectView();
 		redirectView.setUrl("/session/loginFront.do");
 		
+		
 		modelAndView.setView(redirectView);
 		
 		return modelAndView;
