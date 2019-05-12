@@ -54,7 +54,9 @@
 					<div id="navbar-collapse-02" class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-right">
 							<li class="propClone"><a
-								href="<c:url value="/login/loginView.do"/>">마이 페이지</a></li>
+								href="<c:url value="/login/signUpView.do"/>">회원가입</a></li>
+							<li class="propClone"><a
+								href="<c:url value="/login/loginView.do"/>">로그인</a></li>
 							<li class="propClone"><a href="shop.html">Shop</a></li>
 							<li class="propClone"><a href="product.html">Product</a></li>
 							<li class="propClone"><a href="checkout.html">Checkout</a></li>

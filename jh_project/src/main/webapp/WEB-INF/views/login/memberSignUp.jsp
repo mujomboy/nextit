@@ -15,104 +15,104 @@
 <title>Insert title here</title>
 </head>
 <body>
-<script> attachSignUp("회원 가입");</script>
+	<script>
+		attachCenter("회원 가입");
+		window.onload = function() {
+			signUp();
+		}
+	</script>
 
 	<section class="item content">
 		<div class="container toparea">
 			<div class="underlined-title">
 				<div class="editContent">
-					<h1 class="text-center latestitems">MAKE PAYMENT</h1>
+					<h1 class="text-center latestitems">SIGN UP!</h1>
 				</div>
 				<div class="wow-hr type_short">
-					<span class="wow-hr-h"> <i class="fa fa-star"></i> <i
-						class="fa fa-star"></i> <i class="fa fa-star"></i>
+					<span class="wow-hr-h"> <i class="fa fa-user"></i>
 					</span>
 				</div>
 			</div>
+
 			<div id="edd_checkout_wrap" class="col-md-8 col-md-offset-2">
-				<form id="edd_checkout_cart_form" method="post">
-					<div id="edd_checkout_cart_wrap">
-						<table id="edd_checkout_cart" class="ajaxed">
-							<thead>
-								<tr class="edd_cart_header_row">
-									<th class="edd_cart_item_name">Item Name</th>
-									<th class="edd_cart_item_price">Item Price</th>
-									<th class="edd_cart_actions">Actions</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr class="edd_cart_item" id="edd_cart_item_0_25"
-									data-download-id="25">
-									<td class="edd_cart_item_name">
-										<div class="edd_cart_item_image">
-											<img width="25" height="25" src="<c:url value="/images/scorilo2-70x70.jpg"/>"
-												alt="">
-										</div> <span class="edd_checkout_cart_item_title">Audio Item
-											- Single License</span>
-									</td>
-									<td class="edd_cart_item_price">$11.99</td>
-									<td class="edd_cart_actions"><a
-										class="edd_cart_remove_item_btn" href="#">Remove</a></td>
-								</tr>
-							</tbody>
-							<tfoot>
-								<tr class="edd_cart_footer_row">
-									<th colspan="5"><a
-										class="edd-cart-saving-button edd-submit button "
-										id="edd-save-cart-button" href="#">Save Cart</a></th>
-								</tr>
-								<tr class="edd_cart_footer_row edd_cart_discount_row"
-									style="display: none;">
-									<th colspan="5" class="edd_cart_discount"></th>
-								</tr>
-								<tr class="edd_cart_footer_row">
-									<th colspan="5" class="edd_cart_total">Total: <span
-										class="edd_cart_amount" data-subtotal="11.99"
-										data-total="11.99">$11.99</span>
-									</th>
-								</tr>
-							</tfoot>
-						</table>
-					</div>
-				</form>
 				<div id="edd_checkout_form_wrap" class="edd_clearfix">
-					<form id="edd_purchase_form" class="edd_form" action="#"
+					<form id="edd_purchase_form" class="edd_form" action="<c:url value='/login/signUpExc.do'/>"
 						method="POST">
-						<fieldset id="edd_checkout_user_info">
+						<fieldset id="user_info">
 							<legend>Personal Info</legend>
-							<p id="edd-email-wrap">
-								<label class="edd-label" for="edd-email"> Email Address
-									<span class="edd-required-indicator">*</span>
-								</label> <input class="edd-input required" type="email" name="edd_email"
-									placeholder="Email address" id="edd-email" value="">
-							</p>
-							<p id="edd-first-name-wrap">
-								<label class="edd-label" for="edd-first"> First Name <span
+
+							<p>
+								<label class="edd-label" for="id"> ID <span
 									class="edd-required-indicator">*</span>
-								</label> <input class="edd-input required" type="text" name="edd_first"
-									placeholder="First name" id="edd-first" value="" required="">
+								</label> <input class="edd-input required" type="text" name="id" id="id"
+									placeholder="id 입력" value="">
 							</p>
-							<p id="edd-last-name-wrap">
-								<label class="edd-label" for="edd-last"> Last Name </label> <input
-									class="edd-input" type="text" name="edd_last" id="edd-last"
-									placeholder="Last name" value="">
+
+							<p>
+								<label class="edd-label" for="password"> PASSWORD <span
+									class="edd-required-indicator">*</span>
+								</label> <input class="edd-input required" type="password" id="password"
+									name="password" placeholder="password 입력" value="">
 							</p>
+
+							<p>
+								<label class="edd-label" for="comfirm_password"> CONFIRM
+									PASSWORD <span class="edd-required-indicator">*</span>
+								</label> <input class="edd-input required" type="password"
+									name="confirm_password" placeholder="password 확인" value=""
+									id="comfirm_password">
+							</p>
+
+							<p>
+								<label class="edd-label" for="name"> NAME <span
+									class="edd-required-indicator">*</span>
+								</label> <input class="edd-input required" type="text" name="name"
+									placeholder="이름 입력" value="" id="name">
+							</p>
+
+							<p>
+								<label class="edd-label" for="phone_first"> PHONE </label> <input
+									type="hidden" value="" name="phone"> <input
+									class="edd-input" type="text" id="phone_first" value=""
+									maxlength="3" style="width: 3em"> - <input
+									class="edd-input" type="text" id="phone_second" value=""
+									maxlength="4" style="width: 4em"> - <input
+									class="edd-input" type="text" id="phone_third" value=""
+									maxlength="4" style="width: 4em">
+							</p>
+
+							<p>
+								<label class="edd-label" for="age"> AGE </label> <input
+									class="edd-input" type="number" name="age" id="age"
+									placeholder="나이 입력" value="">
+							</p>
+
+							<p>
+								<label class="edd-label" for="email"> EMAIL </label> <input
+									class="edd-input" type="email" name="email" id="email"
+									placeholder="이메일 입력" value="">
+							</p>
+
+							<br>
+							<p style="font-size: 13px">* 는 필수 입력 사항 입니다.</p>
 						</fieldset>
-						<fieldset id="edd_purchase_submit">
-							<p id="edd_final_total_wrap">
-								<strong>Purchase Total:</strong> <span class="edd_cart_amount"
-									data-subtotal="11.99" data-total="11.99">$11.99</span>
+						<fieldset id="submit_info">
+							<p>
+								<strong id="check_info" hidden="true">주의 : </strong> <span
+									id="check_info_con" hidden="true"
+									style="color: red; font-size: 14px">ddd</span>
 							</p>
-							<input type="hidden" name="edd_action" value="purchase">
-							<input type="hidden" name="edd-gateway" value="manual"> <input
-								type="submit" class="edd-submit button" id="edd-purchase-button"
-								name="edd-purchase" value="Purchase">
+							<input type="button" class="edd-submit button"
+								id="edd-purchase-button" name="signup_btn" value="회원가입"
+								onclick="signUp()">
 						</fieldset>
 					</form>
 				</div>
 			</div>
+
 		</div>
 	</section>
+
 
 </body>
 </html>
