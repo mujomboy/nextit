@@ -13,6 +13,9 @@
 <body>
 	<script>
 		attachCenter("로그인");
+		window.onload = function() {
+			login();
+		}
 	</script>
 
 	<section class="item content">
@@ -28,30 +31,37 @@
 			</div>
 
 			<div id="edd_checkout_wrap" class="col-md-8 col-md-offset-2">
-				<form id="edd_checkout_cart_form" method="post">
+				<form id="edd_checkout_cart_form" method="get" action="<c:url value="/login/loginExc.do"/>">
 					<div id="edd_checkout_form_wrap">
 						<table id="edd_checkout_cart">
 							<tbody>
 								<tr class="edd_cart_header_row">
-									<td>
-									<input class="edd-input" type="text" name="id" placeholder="ID 입력">
-									</td>
-									<th rowspan="2" width="45%">
-										<input type="button" class="callactionbutton" value="로그인">
-										<input type="button" class="callactionbutton" value="회원가입">
-									</th>
+									<td><input class="edd-input" type="text" name="id"
+										placeholder="ID 입력"></td>
+									<th rowspan="2" width="45%"><input type="button"
+										id="login_btn" class="edd-submit button" value="로그인"
+										style="padding: 10px 20px; margin-left: 20px;"> <a
+										href="<c:url value="/login/signUpView.do"/>"> <input
+											type="button" class="edd-submit button" value="회원가입"
+											style="padding: 10px 20px; margin-left: 15px;">
+									</a></th>
 								</tr>
 								<tr class="edd_cart_header_row">
-									<td>
-									<input class="edd-input" type="text" name="password" placeholder="PASSWORD 입력">
-									</td>
+									<td><input class="edd-input" type="text" name="password"
+										placeholder="PASSWORD 입력"></td>
 								</tr>
 							</tbody>
 						</table>
+						<p>
+							
+							<strong id="check_info" ${param.fail ne null ? '' : 'hidden=""' }>주의 : </strong> <span
+								id="check_info_con" ${param.fail ne null ? '' : 'hidden=""' }
+								style="color: red; font-size: 14px">${param.fail }</span>
+						</p>
 					</div>
 				</form>
 			</div>
-			
+
 		</div>
 	</section>
 </body>

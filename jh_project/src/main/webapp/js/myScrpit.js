@@ -42,7 +42,7 @@ function attachCenter(str){
 
 function signUp(){
 	
-	$('input[name=signup_btn').click(function() {
+	$('input[name=signup_btn]').click(function() {
 		var checkInfo = $('#check_info');
 		var checkInfoCon = $('#check_info_con');
 		
@@ -122,6 +122,48 @@ function signUp(){
 			document.getElementById("edd_purchase_form").submit();
 			
 		
+		}
+	});
+}
+
+function login(){
+	$('input[id=login_btn]').click(function() {
+		
+		var id = $('input[name=id]');
+		var password = $('input[name=password]');
+		
+		var isHidden = true;
+		
+		var checkInfo = $('#check_info');
+		var checkInfoCon = $('#check_info_con');
+		
+		id.removeClass("error");
+		password.removeClass("error");
+		
+		// 적절성 채크 =======================================================================
+		//ID
+		if(id.val().trim() == ''){
+			isHidden = false;
+			checkInfoCon.html("ID를 입력하세요");
+			id.addClass("error");
+			id.focus();
+			
+		} 
+		// 비밀번호
+		else if(password.val().trim() == ''){
+			isHidden = false;
+			checkInfoCon.html("PASSWORD를 입력하세요");
+			password.addClass("error");
+			password.focus();
+		} 
+		
+		
+		checkInfo.attr('hidden', isHidden);
+		checkInfoCon.attr('hidden', isHidden);
+		
+		// 전송
+		if(isHidden){
+			$('#edd_checkout_cart_form').submit();
 		}
 	});
 }
