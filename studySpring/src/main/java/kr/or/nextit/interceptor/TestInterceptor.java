@@ -48,10 +48,10 @@ public class TestInterceptor extends HandlerInterceptorAdapter {
 			log.debug("key name : {}, key value : {}", name, request.getParameter(name));
 		}
 		
-//		log.debug("model {}",modelAndView.getModel());
+		log.debug("model {}",modelAndView.getModel());
 //		log.debug("modelmap {}",modelAndView.getModelMap());
 		
-		modelAndView.addObject("userTitle", "인터셉터 ㅇ,.ㅇ");
+//		modelAndView.addObject("userTitle", "인터셉터 ㅇ,.ㅇ");
 	}
 }
 

@@ -81,7 +81,7 @@
 		<!-- <beans:bean id="testInterceptor" class="kr.or.nextit.interceptor.TestInterceptor"></beans:bean> -->
 		
 		<interceptor>
-			<mapping path="/**"/>
+			<mapping path="/**/*.do"/>
 			<exclude-mapping path="/session/*"/>
 			<beans:bean id="testInterceptor" class="kr.or.nextit.interceptor.TestInterceptor"></beans:bean>
 		</interceptor>

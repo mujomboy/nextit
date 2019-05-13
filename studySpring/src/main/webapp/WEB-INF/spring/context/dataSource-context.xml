@@ -7,10 +7,14 @@
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:util="http://www.springframework.org/schema/util"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
 		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 		
 		<!-- spring 환경설정 정보를 properties 파일 에서 읽어 옴 -->
@@ -43,6 +47,46 @@
 			<property name="minIdle" value="4"></property>
 			<property name="defaultAutoCommit" value="false"></property>
 		</bean>
+		
+		
+		<!-- 2019년 5월 13일  -->
+		<!-- 트랜잭션 메니저 등록 -->
+		<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+			<property name="dataSource" ref="spring.dataSource"></property>
+		</bean>
+		
+		<!--  트랜잭션 AOP 적용 -->
+		<tx:advice id="txAdvice" transaction-manager="transactionManager">
+			<tx:attributes>
+			
+				<!-- 모든 메소드에 Exception 에러가 발생하면 트랜잭션 적용 -->
+				<tx:method name="*" rollback-for="Exception"/>
+				
+				
+				<!-- 네이밍 룰에 적용되는 것만 트랜잭션 적용 -->
+				<tx:method name="select*" read-only="true"/>
+				<tx:method name="insert*" rollback-for="Exception"/>
+				<tx:method name="update*" rollback-for="Exception"/>
+				<tx:method name="delete*" rollback-for="Exception"/>
+				
+				
+				<tx:method name="put" rollback-for="Exception"/>
+				<tx:method name="set" rollback-for="Exception"/>
+			</tx:attributes>
+		</tx:advice>
+		
+		<aop:config>
+			<aop:pointcut expression="execution(public * kr.or.nextit..*(..))" id="servicePointCut"/>
+			<aop:pointcut expression="execution(public * kr.or.nextit.test..*(..))" id="servicePointCutTest"/>			
+			<aop:pointcut expression="execution(public * kr.or.nextit.test..impl.*(..))" id="servicePointCutDev"/>
+			
+			<aop:advisor advice-ref="txAdvice" pointcut-ref="servicePointCut"/>
+						
+		</aop:config>
+		
+	
+		
+		
 		
 		<!-- Mybatis 설정 -->
 		<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

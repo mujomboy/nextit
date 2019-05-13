@@ -31,7 +31,7 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public void insertBoardInfo(BoardVo boardVo) throws Exception {
-
+		
 		boardMapper.insertBoardInfo(boardVo);
 	}
 
