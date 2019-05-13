@@ -69,4 +69,12 @@ public class MemberServiceImpl implements MemberService{
 		}
 	}
 
+	public MemberMapper getMemberMapper() {
+		return memberMapper;
+	}
+
+	public void setMemberMapper(MemberMapper memberMapper) {
+		this.memberMapper = memberMapper;
+	}
+
 }

@@ -56,5 +56,5 @@ public class LoginVo {
 	public void setEmail(String email) {this.email = email;}
 
 	public void setIp(String ip) {this.ip = ip;}
-	
+
 }

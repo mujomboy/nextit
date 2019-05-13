@@ -45,14 +45,14 @@
 								<label class="edd-label" for="id"> ID <span
 									class="edd-required-indicator">*</span>
 								</label> <input class="edd-input required" type="text" name="id" id="id"
-									placeholder="id 입력" value="">
+									placeholder="id 입력" value="" maxlength="20">
 							</p>
 
 							<p>
 								<label class="edd-label" for="password"> PASSWORD <span
 									class="edd-required-indicator">*</span>
 								</label> <input class="edd-input required" type="password" id="password"
-									name="password" placeholder="password 입력" value="">
+									name="password" placeholder="password 입력" value="" maxlength="20">
 							</p>
 
 							<p>
@@ -60,14 +60,14 @@
 									PASSWORD <span class="edd-required-indicator">*</span>
 								</label> <input class="edd-input required" type="password"
 									name="confirm_password" placeholder="password 확인" value=""
-									id="comfirm_password">
+									id="comfirm_password" maxlength="20">
 							</p>
 
 							<p>
 								<label class="edd-label" for="name"> NAME <span
 									class="edd-required-indicator">*</span>
 								</label> <input class="edd-input required" type="text" name="name"
-									placeholder="이름 입력" value="" id="name">
+									placeholder="이름 입력" value="" id="name" maxlength="5">
 							</p>
 
 							<p>
@@ -90,7 +90,7 @@
 							<p>
 								<label class="edd-label" for="email"> EMAIL </label> <input
 									class="edd-input" type="email" name="email" id="email"
-									placeholder="이메일 입력" value="">
+									placeholder="이메일 입력" value="" maxlength="20">
 							</p>
 
 							<br>
