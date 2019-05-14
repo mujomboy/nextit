@@ -75,6 +75,7 @@ public class LoginController {
 			) throws Exception {
 		
 		log.info("회원가입 여부 판별");
+		log.info("정보 : {}", loginVo);
 		
 		String page = null;
 		
