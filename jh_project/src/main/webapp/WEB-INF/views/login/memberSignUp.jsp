@@ -100,7 +100,7 @@
 							<p>
 								<strong id="check_info" hidden="true">주의 : </strong> <span
 									id="check_info_con" hidden="true"
-									style="color: red; font-size: 14px">ddd</span>
+									style="color: red; font-size: 14px"></span>
 							</p>
 							<input type="button" class="edd-submit button"
 								id="edd-purchase-button" name="signup_btn" value="회원가입"

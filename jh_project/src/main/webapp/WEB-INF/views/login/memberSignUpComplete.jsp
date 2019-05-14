@@ -47,13 +47,15 @@
 				<div class="col-md-4" style="margin-left: 33%">
 					<i class="fa fa-bullhorn infoareaicon"></i>
 					<div class="infoareawrap">
-						<h1 class="text-center subtitle">Hire Us</h1>
-						<p>If you wish to change an element to look or function
-							differently than shown in the demo, we will be glad to assist
-							you. This is a paid service due to theme support requests solved
-							with priority.</p>
+						<h1 class="text-center subtitle">가입이 완료 되었습니다.</h1>
+						<h1 class="text-center subtitle">감사합니다.</h1>
 						<p class="text-center">
-							<a href="#">- Get in Touch -</a>
+							<a href="<c:url value="/"/>">
+								<input type="button" class="edd-submit button" value="메인화면" style="margin-right:15px;">
+							</a>
+							<a href="<c:url value="/login/loginView.do"/>">
+								<input type="button" class="edd-submit button" value="로그인">
+							</a>
 						</p>
 					</div>
 				</div>

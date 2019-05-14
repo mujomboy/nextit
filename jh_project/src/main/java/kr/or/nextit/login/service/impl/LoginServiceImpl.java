@@ -1,5 +1,7 @@
 package kr.or.nextit.login.service.impl;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,5 +19,12 @@ public class LoginServiceImpl implements LoginService {
 	public void insertLoginInfo(LoginVo loginVo) throws Exception {
 		mapper.insertLoginInfo(loginVo);
 	}
+
+	@Override
+	public LoginVo selectLoginInfo(HashMap<String, Object> params) throws Exception {
+		return mapper.selectLoginInfo(params);
+	}
+	
+	
 
 }
