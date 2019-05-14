@@ -77,4 +77,12 @@ public class MemberServiceImpl implements MemberService{
 		this.memberMapper = memberMapper;
 	}
 
+	@Override
+	public MemberVo findIdCheck(String userId) throws Exception {
+		
+		
+		return memberMapper.findIdCheck(userId);
+		
+	}
+
 }

@@ -5,7 +5,9 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
@@ -89,6 +91,7 @@
 		<interceptor>
 			<mapping path="/**/*.do"/>
 			<exclude-mapping path="/session/*"/>
+			<exclude-mapping path="/json/*"/>
 			<exclude-mapping path="/board/*Front.do"/>
 			<beans:bean class="kr.or.nextit.interceptor.SessionInterceptor" id="sessionInterceptor"></beans:bean>
 		</interceptor>

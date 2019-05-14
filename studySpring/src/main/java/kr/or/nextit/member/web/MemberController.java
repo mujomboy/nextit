@@ -31,7 +31,9 @@ public class MemberController {
 	private MemberService memberService;
 	
 	@RequestMapping(value="/memberList.do")
-	public String getMemberList(Model model, @ModelAttribute(name="searchVo") MemberSearchVo searchVo) throws Exception{
+	public String getMemberList(
+			Model model, 
+			@ModelAttribute(name="searchVo") MemberSearchVo searchVo) throws Exception{
 		
 		int totalCount = memberService.selectMemberTotalCnt(searchVo);
 		
@@ -46,17 +48,20 @@ public class MemberController {
 		
 		model.addAttribute("memberList", resultList);
 		
+		
+		
 		return "member/memberList";
 	}
 	
 	@RequestMapping(value= {"/memberInsertFront.do"})
-	public ModelAndView getMemberInsertFront(
+	public String getMemberInsertFront(
 			ModelAndView modelAndView
 			) throws Exception {
 		
-		modelAndView.setViewName("member/memberInsert");
-		return modelAndView;
+		
+		return "member/memberInsert";
 	}
+	
 	
 	@RequestMapping(value="/memberInsertProc.do")
 	public ModelAndView setMemberInserProc(
@@ -65,9 +70,6 @@ public class MemberController {
 			HttpServletRequest req) throws Exception {
 		
 		
-		log.debug("memverVo : {}", memberVo);
-		log.debug("memverVo : {}", memberVo);
-		log.debug("memverVo : {}", memberVo);
 		
 		memberVo.setUsrIp(req.getRemoteAddr());
 		
@@ -87,6 +89,8 @@ public class MemberController {
 		return modelAndViw;
 	}
 	
+	
+	
 	@RequestMapping(value="/memberView.do")
 	public String getMemberInfoView(
 			Model model,
@@ -105,13 +109,20 @@ public class MemberController {
 		return "member/memberView";
 	}
 	
+	
+	
+	
 	@RequestMapping(value="/memberUpdateFront.do")
 	public String getMemberUpdateFront(
 			ModelMap model,
 			@RequestParam HashMap<String, Object> params
 			) throws Exception{
 		
+		
+		
+		
 		log.debug("param : {}", params);
+		
 		
 		String seqNo = (String)params.get("seqNo");
 		MemberVo m = memberService.selectMemberInfo(seqNo);
@@ -120,6 +131,14 @@ public class MemberController {
 		
 		return "member/memberUpdate";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@RequestMapping(value="/memberUpdateProc.do")
 	public String setMemberUpdateProc(
