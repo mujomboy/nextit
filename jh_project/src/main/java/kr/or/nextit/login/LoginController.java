@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.or.nextit.login.service.LoginService;
 import kr.or.nextit.session.vo.LoginVo;
@@ -29,7 +30,7 @@ public class LoginController {
 	
 	@RequestMapping(value="/loginView.do")
 	public String loginView() throws Exception{
-		
+
 		log.info("로그인 페이지");
 		return "login/login";
 	}

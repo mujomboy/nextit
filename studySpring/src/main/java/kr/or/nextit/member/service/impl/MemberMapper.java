@@ -29,4 +29,6 @@ public interface MemberMapper {
 	void deleteFlagMemberInfo(MemberSearchVo searchVo) throws Exception;
 	
 	int selectMemberTotalCnt(MemberSearchVo searchVo) throws Exception;
+	
+	MemberVo findIdCheck(String userId) throws Exception;
 }

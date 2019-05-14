@@ -17,5 +17,7 @@ public interface MemberService {
 	void deleteMemberInfo(String seqNo, MemberSearchVo searchVo) throws Exception;
 	
 	int selectMemberTotalCnt(MemberSearchVo searchVo) throws Exception;
+	
+	public MemberVo findIdCheck(String userId) throws Exception;
 
 }

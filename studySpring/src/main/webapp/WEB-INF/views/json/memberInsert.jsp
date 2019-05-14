@@ -16,14 +16,65 @@
 
     <title>회원가입</title>
 
+<script type="text/javascript">
+
+	$(function(){
+		
+		$('#memberInsert').on('submit', function(e){
+			
+			e.preventDefault();
+			console.log('가입버튼 클릭');
+			console.log($('#memberInsert').serialize());
+			console.log($('#memberInsert'));
+			
+			$.ajax('/json/findIdCheckProc.json',{
+				method: "POST",
+				dataType: "json",
+				data: $('#memberInsert').serialize(),
+				success: function(data, status, xhr){
+					console.log(data);
+				},
+				error : function(jqXhr, textStatus, errorMessage){
+					console.log(jqXhr);
+					console.log(textStatus);
+					console.log(errorMessage);
+				}
+			});
+			
+		});
+		
+		$('#idCheck').on('click', function(e){
+			e.preventDefault();
+			console.log('중복채크 클릭');
+			console.log($('#memberInsert').serialize());
+			
+			$.ajax('/json/findIdCheckProc.json',{
+				method: "POST",
+				dataType: "json",
+				data: $('#memberInsert').serialize(),
+				success: function(data, status, xhr){
+					console.log(data);
+				},
+				error : function(jqXhr, textStatus, errorMessage){
+					console.log(jqXhr);
+					console.log(textStatus);
+					console.log(errorMessage);
+				}
+			});
+		});
+	});
+</script>
 </head>
 <body>
-	<form action="/member/memberInsertProc.do" method="post">
+	<form action="" method="post" id="memberInsert">
 		<table class="table">
 			<tbody>
 				<tr>
 					<th>아이디</th>
-					<td><input type="text" name="usrId" class="form-control"></td>
+					<td>
+					<input type="text" name="usrId" class="form-control">
+					<button id="idCheck" class="btn btn-default" type="button" onmousedown="test()">중복채크</button>
+					</td>
 				</tr>
 				<tr>
 					<th>암호</th>
@@ -68,7 +119,11 @@
 		</table>
 	</form>
 			
-
+	<script>
+		function test(){
+			console.log($('#memberInsert').serialize());
+		}
+	</script>
 </body>
 </html>
     

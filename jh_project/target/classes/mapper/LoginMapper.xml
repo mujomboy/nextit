@@ -20,7 +20,6 @@
 
 	</select>
 
-
 	<insert id="insertLoginInfo"
 		parameterType="kr.or.nextit.session.vo.LoginVo">
 

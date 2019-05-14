@@ -129,7 +129,7 @@
 		)
 	</insert>
 
-	<update id="updateMemberInfo" parameterType="HashMap">
+	<update id="updateMemberInfo"  parameterType="HashMap">
 
 
 		UPDATE tb_com_member
@@ -169,5 +169,19 @@
 		seq_no = #{seqNo}
 
 	</update>
+	
+	
+	<select id="findIdCheck" parameterType="String" resultType="kr.or.nextit.member.service.MemberVo">
+		
+		SELECT
+			seq_no,
+			usr_id
+		FROM
+			tb_com_member
+		where usr_id = #{userId}
+		
+	</select>
+	
+	
 </mapper>
 

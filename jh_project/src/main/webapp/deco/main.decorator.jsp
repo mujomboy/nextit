@@ -53,10 +53,19 @@
 					</div>
 					<div id="navbar-collapse-02" class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-right">
-							<li class="propClone"><a
-								href="<c:url value="/login/signUpView.do"/>">회원가입</a></li>
-							<li class="propClone"><a
-								href="<c:url value="/login/loginView.do"/>">로그인</a></li>
+						<c:set value="${loginVo ne null}" var="isTrue"></c:set>
+						<c:choose>
+							<c:when test="${loginVo eq null}">
+								<li class="propClone"><a href="<c:url value="/login/signUpView.do"/>">회원가입</a></li>
+								<li class="propClone"><a href="<c:url value="/login/loginView.do"/>">로그인</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="propClone"><a href="<c:url value="/"/>">마이페이지</a></li>
+								<li class="propClone"><a href="<c:url value="/"/>">로그아웃</a></li>
+							</c:otherwise>
+						</c:choose>
+							
+							
 							<li class="propClone"><a href="shop.html">Shop</a></li>
 							<li class="propClone"><a href="product.html">Product</a></li>
 							<li class="propClone"><a href="checkout.html">Checkout</a></li>
