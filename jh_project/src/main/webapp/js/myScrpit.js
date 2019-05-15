@@ -51,7 +51,7 @@ function signUp(){
 		var password = $('input[name=password]');
 		var confirmPassword = $('input[name=confirm_password]');
 		var name = $('input[name=name]');
-		
+		var checkCon = $('#duplication_con');
 	
 		var isHidden = true;
 		
@@ -94,6 +94,14 @@ function signUp(){
 			name.focus();
 		}
 		
+		// 중복검사 확인
+		else if(checkCon.attr("class") != 'true'){
+			isHidden = false;
+			checkInfoCon.html("중복검사를 해주세요");
+			checkCon.focus();
+		}
+		
+		console.log(checkCon.attr("class"));
 		
 		
 		checkInfo.attr("hidden", isHidden);
@@ -169,11 +177,57 @@ function login(){
 }
 
 
+function duplicationIdCheck(){
 
+	$("#duplication_id").click(function() {
+		var id = $('#id');
+		var checkCon = $("#duplication_con");
+		
+		if(id.val().trim() == ''){
+			checkCon.html("비어 있음");
+			checkCon.css("color", "red");
+			checkCon.attr("class", "false");
+			console.log("비어있음");
+			return;
+		}
+		
+		console.log(id.serialize());
+		
+		$.ajax('/login/duplicationId.json', {
+			method: "",
+			dataType: "",
+			data: id.serialize(),
+			success: function(data, status, xhr){
+								
+				if(data){
+					checkCon.html("사용 불가");
+					checkCon.css("color", "red");
+					checkCon.attr("class", "false");
 
-$("#duplication_id").click(function() {
+					console.log("중복");
+				}
+				else{
+					checkCon.html("사용 가능");
+					checkCon.attr("class", "true");
+					checkCon.css("color", "green");
+					console.log("중복아님");
+				}
+			},
+			error: function(xhr, status, error){
+				console.log(error);
+			}
+		});
+		
+	});
 	
-});
+	
+	$('input[name=id]').on("keydown",function(e){
+		var checkCon = $("#duplication_con");
+		checkCon.html("");
+		checkCon.attr("class", "false");
+	});
+}
+
 
 
 

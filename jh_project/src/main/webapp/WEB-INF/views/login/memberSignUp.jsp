@@ -19,10 +19,8 @@
 		attachCenter("회원 가입");
 		window.onload = function() {
 			signUp();
-			
+			duplicationIdCheck();	
 		}
-		
-		
 	</script>
 
 	<section class="item content">
@@ -48,10 +46,11 @@
 								<label for="id" style="width: 10%; display: inline-block;"> ID <span
 									class="edd-required-indicator">*</span>
 								</label>
-								<a id="duplication_id" style="font-weight: bold; cursor:pointer;">중복확인</a>
-								
+								<a id="duplication_id" style="font-weight: bold; cursor:pointer;">중복검사</a>
+								<span id="duplication_con" style="font-size: 12px"></span>
+									
 								 <input class="edd-input required" type="text" name="id" id="id"
-									placeholder="id 입력" value="" maxlength="20">
+									placeholder="id 입력" value="" maxlength="20" >
 							</p>
 
 							<p>

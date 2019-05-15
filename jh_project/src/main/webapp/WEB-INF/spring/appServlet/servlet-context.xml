@@ -58,6 +58,8 @@
 			<mapping path="/**/*.do"/>
 			<!--  로그인 상태 검사 제외 -->
 			<exclude-mapping path="/login/*.do"/>
+			<exclude-mapping path="/member/myPageView.do"/>		<!--  개발중.. 임시 지정 -->
+			
 			<beans:bean class="kr.or.nextit.interceptor.LogCheckInterceptor" id="logCheckInterceptor"></beans:bean>
 		</interceptor>
 	</interceptors>
