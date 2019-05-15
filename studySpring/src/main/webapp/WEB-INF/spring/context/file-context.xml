@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+
+	<!-- 파일 업로드 공동 (임시/원본 파일 위치 변경시, 선택사항) -->
+	<bean id="uploadTempDir" class="org.springframework.core.io.FileSystemResource">
+		<constructor-arg value="/uploadTempDir"></constructor-arg>
+	</bean>
+	
+	<!-- 기존 스프링 프레임워크 파일 업로드 기능 (필수사항) -->
+	<bean id="spring.CommonsMultipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="1024000000"></property>
+		<property name="defaultEncoding" value="utf-8"></property>
+	</bean>
+	
+	<!-- 향상된 파일 업로드 기능을 활성화 (서블릿 3.x 버전이상에서 사용 가능 (선택 사항)) -->
+	<bean id="standard.ServletMultipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
+	
+	</bean>
+	
+	<!-- 선택적으로 MultipartResolver 선택 하기 위하여 alias 선언 -->
+	<alias name="standard.ServletMultipartResolver" alias="multipartResolver"/>
+</beans>

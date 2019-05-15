@@ -154,7 +154,7 @@
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapsePages"
 				aria-expanded="true" aria-controls="collapsePages"> <i
-					class="fas fa-fw fa-folder"></i> <span>Pages</span>
+					class="fas fa-fw fa-folder"></i> <span>ㅇㅇ</span>
 			</a>
 				<div id="collapsePages" class="collapse"
 					aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -163,8 +163,7 @@
 						
 						<a class="collapse-item" href="<c:url value='/properties/propertiesFront.do'/>">properties</a> <a
 							class="collapse-item" href="<c:url value='/message/messageSource.do'/>">message Source</a> <a
-							class="collapse-item" href="forgot-password.html">Forgot
-							Password</a>
+							class="collapse-item" href="<c:url value='/attach/fileUploadFront.do'/>">파일 업로드</a>
 						<div class="collapse-divider"></div>
 						<h6 class="collapse-header">Other Pages:</h6>
 						<a class="collapse-item" href="404.html">404 Page</a> <a
