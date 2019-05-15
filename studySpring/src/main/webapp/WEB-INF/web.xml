@@ -66,12 +66,23 @@
 			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
+		
+		<!--  서블릿 3.1 첨부파일 업로드 설정 3.x 이하 버전에서는 지원 하지 않음 -->
+		<multipart-config>
+			<max-file-size>104857600</max-file-size>
+			<max-request-size>104857600</max-request-size>
+			<file-size-threshold>104857600</file-size-threshold>
+		</multipart-config>
+		
 	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	
+	
+	
 
 </web-app>
 

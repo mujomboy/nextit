@@ -93,6 +93,7 @@
 			<exclude-mapping path="/session/*"/>
 			<exclude-mapping path="/json/*"/>
 			<exclude-mapping path="/board/*Front.do"/>
+			<exclude-mapping path="/attach/*"/>
 			<beans:bean class="kr.or.nextit.interceptor.SessionInterceptor" id="sessionInterceptor"></beans:bean>
 		</interceptor>
 	</interceptors>

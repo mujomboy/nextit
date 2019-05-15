@@ -18,6 +18,9 @@
 
 <script type="text/javascript">
 
+
+	var joinInfo = {status:false, checkId:"", message:""};
+
 	$(function(){
 		
 		$('#memberInsert').on('submit', function(e){
@@ -27,12 +30,29 @@
 			console.log($('#memberInsert').serialize());
 			console.log($('#memberInsert'));
 			
-			$.ajax('/json/findIdCheckProc.json',{
+			console.log("아이디 채크 여부 " + joinInfo.status);
+			
+			var userId = $('input[name=usrId]').val();
+			
+			if(joinInfo.status && joinInfo.checkId == userId){
+				console.log("회원가입")
+			} else {
+				console.log("아이디 중복 채크를 다시");
+				return false;
+			}
+			
+			$.ajax('/json/insertMemberInfo.json',{
 				method: "POST",
 				dataType: "json",
 				data: $('#memberInsert').serialize(),
 				success: function(data, status, xhr){
 					console.log(data);
+					
+					if(data.status){
+						location.href="/json/memberListFront.do";
+					}
+					
+					console.log("joinInfo :" + joinInfo);
 				},
 				error : function(jqXhr, textStatus, errorMessage){
 					console.log(jqXhr);
@@ -54,6 +74,13 @@
 				data: $('#memberInsert').serialize(),
 				success: function(data, status, xhr){
 					console.log(data);
+					
+					if(data.status){
+						joinInfo = data;
+					}
+					
+					for(var key in data)
+						console.log(key + " : " + data[key]);
 				},
 				error : function(jqXhr, textStatus, errorMessage){
 					console.log(jqXhr);

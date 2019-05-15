@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Properties;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -89,7 +90,7 @@ public class JsonMemberController {
 			if(service.findIdCheck(userId) == null) {
 				result.put("status", true);
 				result.put("message", "사용 가능 아이디");
-				result.put("status", userId);
+				result.put("checkId", userId);
 			} else {
 				throw new Exception("아이디가 있음");
 			}
@@ -106,7 +107,34 @@ public class JsonMemberController {
 	}
 	
 	
-	
+	@ResponseBody
+	@RequestMapping(value="/insertMemberInfo.json")
+	public HashMap<String, Object> setInsertMemberInfo(
+			@ModelAttribute MemberVo memberVo,
+			HttpServletRequest req
+			) throws Exception {
+		
+		log.debug("insert data : {}", memberVo);
+		log.debug("insert data : {}", memberVo);
+		
+		HashMap<String, Object> result = new HashMap<>();
+		
+		memberVo.setUsrIp(req.getRemoteAddr());
+		
+		try {
+			service.insertMemberInfo(memberVo);
+			
+			result.put("status", true);
+			result.put("message", "가입 완료");
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			result.put("status", false);
+			result.put("message", e.getMessage());
+		}
+		
+		return result;
+	}
 	
 	
 	

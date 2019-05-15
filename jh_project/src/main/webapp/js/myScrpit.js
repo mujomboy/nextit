@@ -167,3 +167,14 @@ function login(){
 		}
 	});
 }
+
+
+
+
+$("#duplication_id").click(function() {
+	
+});
+
+
+
+

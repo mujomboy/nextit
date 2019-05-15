@@ -19,7 +19,10 @@
 		attachCenter("회원 가입");
 		window.onload = function() {
 			signUp();
+			
 		}
+		
+		
 	</script>
 
 	<section class="item content">
@@ -42,9 +45,12 @@
 							<legend>Personal Info</legend>
 
 							<p>
-								<label class="edd-label" for="id"> ID <span
+								<label for="id" style="width: 10%; display: inline-block;"> ID <span
 									class="edd-required-indicator">*</span>
-								</label> <input class="edd-input required" type="text" name="id" id="id"
+								</label>
+								<a id="duplication_id" style="font-weight: bold; cursor:pointer;">중복확인</a>
+								
+								 <input class="edd-input required" type="text" name="id" id="id"
 									placeholder="id 입력" value="" maxlength="20">
 							</p>
 
@@ -103,8 +109,7 @@
 									style="color: red; font-size: 14px"></span>
 							</p>
 							<input type="button" class="edd-submit button"
-								id="edd-purchase-button" name="signup_btn" value="회원가입"
-								onclick="signUp()">
+								id="edd-purchase-button" name="signup_btn" value="회원가입">
 						</fieldset>
 					</form>
 				</div>
