@@ -5,14 +5,14 @@
 	<select id="selectLoginInfo" parameterType="HashMap" resultType="kr.or.nextit.session.vo.LoginVo">
 		
 		SELECT
-		    p_id,
-		    p_password,
-		    p_name,
-		    p_age,
-		    p_phone,
-		    p_email,
-		    p_ip,
-		    p_reg_date
+		    p_id id,
+		    p_password password,
+		    p_name name,
+		    p_age age,
+		    p_phone phone,
+		    p_email email,
+		    p_ip ip,
+		    p_reg_date regDate
 		FROM
 		    project_one
 		where

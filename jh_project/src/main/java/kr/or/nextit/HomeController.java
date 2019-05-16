@@ -34,7 +34,7 @@ public class HomeController {
 		String page = "home";
 		
 		if(params.containsKey("out")) {
-			session.setAttribute("loginVo", null);
+			session.setAttribute("loginInfo", null);
 			logger.info("로그 아웃");
 			
 		}
