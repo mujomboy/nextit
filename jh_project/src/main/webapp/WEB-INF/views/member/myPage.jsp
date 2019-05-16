@@ -32,30 +32,45 @@
 				</div>
 			</div>
 			<div id="edd_checkout_wrap" class="col-md-8 col-md-offset-2">
-			<table class="table" id="edd_checkout_cart">
+			<table  id="edd_checkout_cart">
 				<tr class="edd_cart_header_row">
 					<th>아이디</th>
 					<td>${loginVo.id }</td>
 				</tr>
 				<tr class="edd_cart_header_row">
 					<th>비밀번호</th>
-					<td>dd</td>
+					<td>
+						<input type="text" placeholder="password 입력" name="password">
+						<input type="text" placeholder="password 확인" name="confirm_password">
+					</td>
 				</tr>
 				<tr class="edd_cart_header_row">
 					<th>이름</th>
-					<td>dd</td>
+					<td>
+						<input type="text" placeholder="이름 입력" name="name" value="${loginVo.name }">
+					</td>
 				</tr>
 				<tr class="edd_cart_header_row">
 					<th>연락처</th>
-					<td>dd</td>
+					<td>
+
+					</td>
 				</tr>
 				<tr class="edd_cart_header_row">
 					<th>나이</th>
-					<td>dd</td>
+					<td>
+						<input type="text" placeholder="나이 입력" name="age" value="${loginVo.age }">
+					</td>
 				</tr>
 				<tr class="edd_cart_header_row">
 					<th>이메일</th>
-					<td>dd</td>
+					<td>
+						<input type="text" placeholder="이메일 입력" name="email" value="${loginVo.email }">
+					</td>
+				</tr>
+				<tr class="edd_cart_header_row">
+					<th>가입일</th>
+					<td>${loginVo.regDate }</td>
 				</tr>
 			</table>
 			</div>

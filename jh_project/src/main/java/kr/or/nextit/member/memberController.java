@@ -14,6 +14,8 @@ public class memberController {
 	@RequestMapping(value="/myPageView.do")
 	public String myPageView() throws Exception {
 		
+		log.info("마이페이지 이동");
+		
 		return "member/myPage";
 	}
 }

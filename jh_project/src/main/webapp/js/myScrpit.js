@@ -194,8 +194,8 @@ function duplicationIdCheck(){
 		console.log(id.serialize());
 		
 		$.ajax('/login/duplicationId.json', {
-			method: "",
-			dataType: "",
+			method: "POST",
+			dataType: "json",
 			data: id.serialize(),
 			success: function(data, status, xhr){
 								

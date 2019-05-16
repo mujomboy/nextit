@@ -3,6 +3,58 @@
 <mapper namespace="kr.or.nextit.attach.service.impl.AttachMapper">
 
 
+<insert id="insertFileInfo" parameterType="kr.or.nextit.attach.service.AttachVo">
 
+	INSERT INTO tb_com_attach (
+	    group_seq_no,
+	    seq_no,
+	    service_type,
+	    file_name,
+	    file_down_cnt,
+	    save_path,
+	    save_name,
+	    save_content_type,
+	    save_size,
+	    usr_ip,
+	    del_at,
+	    reg_user,
+	    reg_dt
+	) VALUES (
+	    #{groupSeqNo},
+	    seq_tb_com_attach.nextval,
+	    #{serviceType},
+	    #{fileName},
+	    0,
+	    #{savePath},
+	    #{saveName},
+	    #{saveContentType},
+	    #{saveSize},
+	    #{usrIp},
+	    'N',
+	    #{regUser},
+	    sysdate
+	)
+</insert>
 
+<select id="selectFileList" parameterType="String" resultType="kr.or.nextit.attach.service.AttachVo">
+
+	SELECT
+	    group_seq_no,
+	    seq_no,
+	    service_type,
+	    file_name,
+	    file_down_cnt,
+	    save_path,
+	    save_name,
+	    save_content_type,
+	    save_size,
+	    usr_ip,
+	    del_at,
+	    reg_user,
+	    reg_dt
+	FROM
+	    tb_com_attach
+	where
+	    group_seq_no = #{groupSeqNo}
+</select>
 </mapper>

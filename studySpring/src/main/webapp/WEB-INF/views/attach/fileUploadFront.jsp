@@ -23,6 +23,8 @@
 
 <body>
 
+<h1>${fileInfo }</h1>
+
 	<form action="/attach/fileUploadProc.do" enctype="multipart/form-data" method="post">
 		<table class="table">
 			<tbody>

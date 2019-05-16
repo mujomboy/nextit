@@ -33,6 +33,9 @@
 <!-- Bootstrap core JavaScript-->
 
 <script src="<c:url value="/vendor/jquery/jquery.min.js"/>"></script>
+<script src="<c:url value="/vendor/jquery/jquery.form.min.js"/>"></script>
+
+
 <script
 	src="<c:url value="/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
 
@@ -164,6 +167,11 @@
 						<a class="collapse-item" href="<c:url value='/properties/propertiesFront.do'/>">properties</a> <a
 							class="collapse-item" href="<c:url value='/message/messageSource.do'/>">message Source</a> <a
 							class="collapse-item" href="<c:url value='/attach/fileUploadFront.do'/>">파일 업로드</a>
+							<a class="collapse-item" href="<c:url value='/attach/ajaxFileUploadFront.do'/>">파일 업로드(비동기)</a>
+							<a class="collapse-item" href="<c:url value='/attach/testDownload.do'/>">파일 다운 로드 </a>
+							
+							
+							
 						<div class="collapse-divider"></div>
 						<h6 class="collapse-header">Other Pages:</h6>
 						<a class="collapse-item" href="404.html">404 Page</a> <a

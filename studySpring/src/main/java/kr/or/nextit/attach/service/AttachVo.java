@@ -12,7 +12,7 @@ public class AttachVo {
 	private String savePath;
 	private String saveName;
 	private String saveContentType;
-	private String saveSize;
+	private long saveSize;
 	private String usrIp;
 	private String delAt;
 	private String regUser;
@@ -29,7 +29,7 @@ public class AttachVo {
 	public String getSavePath() {return savePath;}
 	public String getSaveName() {return saveName;}
 	public String getSaveContentType() {return saveContentType;}
-	public String getSaveSize() {return saveSize;}
+	public long getSaveSize() {return saveSize;}
 	public String getUsrIp() {return usrIp;}
 	public String getDelAt() {return delAt;}
 	public String getRegUser() {return regUser;}
@@ -42,7 +42,7 @@ public class AttachVo {
 	public void setSavePath(String savePath) {this.savePath = savePath;}
 	public void setSaveName(String saveName) {this.saveName = saveName;}
 	public void setSaveContentType(String saveContentType) {this.saveContentType = saveContentType;}
-	public void setSaveSize(String saveSize) {this.saveSize = saveSize;}
+	public void setSaveSize(long saveSize) {this.saveSize = saveSize;}
 	public void setUsrIp(String usrIp) {this.usrIp = usrIp;}
 	public void setDelAt(String delAt) {this.delAt = delAt;}
 	public void setRegUser(String regUser) {this.regUser = regUser;}

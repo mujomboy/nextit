@@ -11,7 +11,8 @@
 		    p_age,
 		    p_phone,
 		    p_email,
-		    p_ip
+		    p_ip,
+		    p_reg_date
 		FROM
 		    project_one
 		where
