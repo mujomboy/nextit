@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.or.nextit.login.service.LoginService;
@@ -95,5 +96,19 @@ public class LoginController {
 		}
 		
 		return page;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/duplicationId.json")
+	public boolean getDuplicationCheck(
+			@RequestParam HashMap<String, Object> params
+			) throws Exception {
+		
+		
+		String id = service.selectCheckId(params);
+		
+		log.debug("아이디 중복 채크 : {}", id);
+		
+		return id == null ? false : true;
 	}
 }

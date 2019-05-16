@@ -9,4 +9,6 @@ public interface LoginService {
 	void insertLoginInfo(LoginVo loginVo) throws Exception;
 	
 	LoginVo selectLoginInfo(HashMap<String, Object> params) throws Exception;
+	
+	String selectCheckId(HashMap<String, Object> params) throws Exception;
 }

@@ -24,6 +24,12 @@ public class LoginServiceImpl implements LoginService {
 	public LoginVo selectLoginInfo(HashMap<String, Object> params) throws Exception {
 		return mapper.selectLoginInfo(params);
 	}
+
+	@Override
+	public String selectCheckId(HashMap<String, Object> params) throws Exception {
+		
+		return mapper.selectCheckId(params);
+	}
 	
 	
 

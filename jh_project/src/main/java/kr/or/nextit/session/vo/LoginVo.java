@@ -16,7 +16,10 @@ public class LoginVo {
 	private String phone;
 	private String email;
 	private String ip;
+	private String regDate;
 	
+	
+
 	public LoginVo(String id, String password, String name, int age, String phone, String email, String ip) {
 		this.id = id;
 		this.password = password;
@@ -57,4 +60,7 @@ public class LoginVo {
 
 	public void setIp(String ip) {this.ip = ip;}
 
+	public String getRegDate() {return regDate;}
+
+	public void setRegDate(String regDate) {this.regDate = regDate;}
 }

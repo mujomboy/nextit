@@ -19,6 +19,16 @@
 		and p_password = #{password}
 
 	</select>
+	
+	<select id="selectCheckId" parameterType="HashMap" resultType="String">
+	
+			SELECT
+			    p_id
+			FROM
+			    project_one
+			where
+			    p_id = #{id}
+	</select>
 
 	<insert id="insertLoginInfo"
 		parameterType="kr.or.nextit.session.vo.LoginVo">
