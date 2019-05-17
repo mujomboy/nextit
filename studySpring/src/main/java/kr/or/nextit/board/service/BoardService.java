@@ -7,7 +7,7 @@ public interface BoardService {
 
 	List<BoardVo> selectBoardList(BoardSearchVo searchVo) throws Exception;
 	
-	void insertBoardInfo(BoardVo boardVo) throws Exception;
+	BoardVo insertBoardInfo(BoardVo boardVo) throws Exception;
 	
 	BoardVo selectBoardInfo(String seqNo) throws Exception;
 	

@@ -3,7 +3,7 @@
 <mapper namespace="kr.or.nextit.member.mapper.MemberMapper">
 
 
-<update id="updateMyPage" parameterType="kr.or.nextit.session.vo.LoginVo">
+<update id="updateMyPage" parameterType="kr.or.nextit.session.vo.LoginVo" flushCache="true" >
 
 
 	UPDATE project_one

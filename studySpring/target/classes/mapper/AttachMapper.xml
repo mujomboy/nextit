@@ -57,4 +57,58 @@
 	where
 	    group_seq_no = #{groupSeqNo}
 </select>
+
+<select id="selectFileInfo" parameterType="int" resultType="kr.or.nextit.attach.service.AttachVo">
+	
+	SELECT
+	    group_seq_no,
+	    seq_no,
+	    service_type,
+	    file_name,
+	    file_down_cnt,
+	    save_path,
+	    save_name,
+	    save_content_type,
+	    save_size,
+	    usr_ip,
+	    del_at,
+	    reg_user,
+	    reg_dt
+	FROM
+	    tb_com_attach
+	where
+	    seq_no = #{value}
+	    
+</select>
+
+
+
+<update id="updateFileInfoCnt" parameterType="int">
+
+
+   UPDATE tb_com_attach
+SET
+   file_down_cnt = file_down_cnt + 1
+WHERE
+   seq_no = #{value}
+    
+    
+    
+</update>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </mapper>

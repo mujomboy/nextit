@@ -14,4 +14,8 @@ public interface AttachMapper {
 	List<AttachVo> selectFileList(
 			String groupSeqNo
 			) throws Exception;
+	
+	public AttachVo selectFileInfo(int seqNo) throws Exception;
+	
+	void updateFileInfoCnt(int seqNo) throws Exception;
 }

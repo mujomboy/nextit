@@ -34,6 +34,20 @@
   		<tr> <th>등록일</th> <td>${boardInfo.regDt}</td> </tr>
   		<tr> <th>수정자</th> <td>${boardInfo.updUser}</td> </tr>
   		<tr> <th>수정일</th> <td>${boardInfo.updDt}</td> </tr>
+  		<tr>
+  			<th>첨부파일</th>
+  			<td>
+  				<c:forEach var="attachVo" items="${attachList }">
+  					<c:url var="downloadUrl" value="/attach/FileDownload.do">
+  						<c:param name="seqNo" value="${attachVo.seqNo }"></c:param>
+  					</c:url>
+  					
+  					<img alt="" src="${downloadUrl }" width="150px">
+  					<a href="${downloadUrl }">다운로드</a>
+  				</c:forEach>
+  			</td>
+  		</tr>
+  		
   		<tr><td> 
   		
   		<a href="/board/boardListFront.do">	목록 </a> 

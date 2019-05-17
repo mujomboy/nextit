@@ -36,17 +36,26 @@
 </head>
 <body>
 
-	<script>attachMain("아직 정해지지 않음", "홈페이지임");</script>
+	<script>
+		attachMain("PROJECT", "HOMEPAGE");
+	</script>
 	
-	<!-- STEPS =============================-->
+	
 	<div class="item content">
 		<div class="container toparea">
+			<div class="underlined-title">
+				<div class="editContent">
+					<h1 class="text-center latestitems">BOARDS</h1>
+				</div>
+				<div class="wow-hr type_short">
+					<span class="wow-hr-h"> <i class="fa fa-user"></i>
+					</span>
+				</div>
+			</div>
 			<div class="row text-center">
 				<div class="col-md-4">
-					<div class="col editContent">
-						<!-- <span class="numberstep"><i class="fa fa-shopping-cart"></i></span> -->
-						<h3 class="numbertext">기능 1</h3>
-						<p>내용 들어가는 곳</p>
+					<div class="col editContent" style="padding-top: 30px">
+						<a href="<c:url value='/board/freeBoardListView.do'/>" style="font-weight: bold; cursor:pointer;">자유 게시판</a>
 					</div>
 					<!-- /.col-md-4 -->
 				</div>

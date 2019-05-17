@@ -44,6 +44,7 @@ public class FileUploadController {
 	@RequestMapping(value = "/attach/ajaxFileUploadProc.json")
 	@ResponseBody
 	public HashMap<String, Object> ajaxfileUploadProc(
+			
 			@RequestParam HashMap<String, Object> params,
 			@RequestParam(name = "attachFiles") List<MultipartFile> attachFiles, HttpServletRequest req)
 			throws Exception {
@@ -64,7 +65,7 @@ public class FileUploadController {
 
 		HashMap<String, Object> result = attachService.insertFileUploads(groupSeqNo, serviceType, savePath, userId,
 				userIp, attachFiles);
-
+		
 		return result;
 	}
 
