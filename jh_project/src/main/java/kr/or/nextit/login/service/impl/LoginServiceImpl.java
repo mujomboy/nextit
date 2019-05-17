@@ -17,12 +17,16 @@ public class LoginServiceImpl implements LoginService {
 	
 	@Override
 	public void insertLoginInfo(LoginVo loginVo) throws Exception {
+		
 		mapper.insertLoginInfo(loginVo);
+		
 	}
 
 	@Override
 	public LoginVo selectLoginInfo(HashMap<String, Object> params) throws Exception {
+		
 		return mapper.selectLoginInfo(params);
+		
 	}
 
 	@Override

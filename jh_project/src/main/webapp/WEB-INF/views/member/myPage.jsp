@@ -15,7 +15,7 @@
 	<script>
 		attachCenter("마이 페이지");
 		window.onload = function() {
-			
+			signUp();
 		}
 	</script>
 
@@ -32,50 +32,69 @@
 				</div>
 			</div>
 			<div id="edd_checkout_wrap" class="col-md-8 col-md-offset-2">
-			<table  id="edd_checkout_cart">
-				<tr class="edd_cart_header_row">
-					<th>아이디</th>
-					<td>${loginVo.id }</td>
-				</tr>
-				<tr class="edd_cart_header_row">
-					<th>비밀번호</th>
-					<td>
-						<input type="text" placeholder="password 입력" name="password">
-						<input type="text" placeholder="password 확인" name="confirm_password">
-					</td>
-				</tr>
-				<tr class="edd_cart_header_row">
-					<th>이름</th>
-					<td>
-						<input type="text" placeholder="이름 입력" name="name" value="${loginVo.name }">
-					</td>
-				</tr>
-				<tr class="edd_cart_header_row">
-					<th>연락처</th>
-					<td>
-
-					</td>
-				</tr>
-				<tr class="edd_cart_header_row">
-					<th>나이</th>
-					<td>
-						<input type="text" placeholder="나이 입력" name="age" value="${loginVo.age }">
-					</td>
-				</tr>
-				<tr class="edd_cart_header_row">
-					<th>이메일</th>
-					<td>
-						<input type="text" placeholder="이메일 입력" name="email" value="${loginVo.email }">
-					</td>
-				</tr>
-				<tr class="edd_cart_header_row">
-					<th>가입일</th>
-					<td>${loginVo.regDate }</td>
-				</tr>
-			</table>
+				<div id="edd_checkout_form_wrap">
+				<form id="edd_purchase_form" class="edd_form" action="<c:url value='/member/myPageUpdate.do'/>" method="POST">
+					<table id="edd_checkout_cart">
+						<tr class="edd_cart_header_row">
+							<th>아이디</th>
+							<td>
+								<input type="hidden" name="id" value="${loginInfo.id }" id="duplication_con" class="true">
+								${loginInfo.id }
+							</td>
+						</tr>
+						<tr class="edd_cart_header_row">
+							<th>비밀번호</th>
+							<td><input class="edd-input" type="password"
+								placeholder="password 확인" name="password"
+								style="margin-bottom: 4px"> <input class="edd-input"
+								type="hidden" value="${loginInfo.password }" name="confirm_password">
+							</td>
+						</tr>
+						<tr class="edd_cart_header_row">
+							<th>이름</th>
+							<td><input class="edd-input" type="text" placeholder="이름 입력"
+								name="name" value="${loginInfo.name }"></td>
+						</tr>
+						<tr class="edd_cart_header_row">
+							<th>연락처</th>
+							<td><input type="hidden" value="" name="phone"> <input
+								class="edd-input" type="text" id="phone_first"
+								value="${nums[0] }" maxlength="3" style="width: 3em"> -
+								<input class="edd-input" type="text" id="phone_second"
+								value="${nums[1] }" maxlength="4" style="width: 4em"> -
+								<input class="edd-input" type="text" id="phone_third"
+								value="${nums[2] }" maxlength="4" style="width: 4em"></td>
+						</tr>
+						<tr class="edd_cart_header_row">
+							<th>나이</th>
+							<td><input class="edd-input" type="number"
+								placeholder="나이 입력" name="age" value="${loginInfo.age }">
+							</td>
+						</tr>
+						<tr class="edd_cart_header_row">
+							<th>이메일</th>
+							<td><input class="edd-input" type="text"
+								placeholder="이메일 입력" name="email" value="${loginInfo.email }">
+							</td>
+						</tr>
+						<tr class="edd_cart_header_row">
+							<th>가입일</th>
+							<td>${loginInfo.regDate }</td>
+						</tr>
+					</table>
+					<p>
+						<strong id="check_info" hidden="true">주의 : </strong> <span
+							id="check_info_con" hidden="true"
+							style="color: red; font-size: 14px"></span>
+					</p>
+					<input type="button" class="edd-submit button"
+						id="edd-purchase-button" name="signup_btn" value="수정">
+					</form>
+				</div>
 			</div>
-			
+
 		</div>
 	</section>
+
 </body>
 </html>

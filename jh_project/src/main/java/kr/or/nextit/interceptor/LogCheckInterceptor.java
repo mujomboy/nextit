@@ -22,7 +22,7 @@ public class LogCheckInterceptor extends HandlerInterceptorAdapter{
 		
 		log.info("로그인 상태 채크");
 		
-		LoginVo loginVo = (LoginVo) request.getSession().getAttribute("loginVo");
+		LoginVo loginVo = (LoginVo) request.getSession().getAttribute("loginInfo");
 		
 		//
 		if(loginVo == null) {
