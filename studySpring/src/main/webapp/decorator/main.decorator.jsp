@@ -168,7 +168,7 @@
 							class="collapse-item" href="<c:url value='/message/messageSource.do'/>">message Source</a> <a
 							class="collapse-item" href="<c:url value='/attach/fileUploadFront.do'/>">파일 업로드</a>
 							<a class="collapse-item" href="<c:url value='/attach/ajaxFileUploadFront.do'/>">파일 업로드(비동기)</a>
-							<a class="collapse-item" href="<c:url value='/attach/testDownload.do'/>">파일 다운 로드 </a>
+							<a class="collapse-item" href="<c:url value='/attach/testDownload.do/'/>">파일 다운 로드 </a>
 							
 							
 							

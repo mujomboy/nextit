@@ -17,34 +17,48 @@
 <meta name="description" content="mvc">
 <meta name="author" content="kjh">
 
-<title>next it</title>
+<title>자유 게시판</title>
 
 </head>
-
 <body>
+	<script>
+		attachCenter("자유 게시판");
+		window.onload = function() {
 
-	<table class="table">
-		<c:forEach var="vo" items="${attachList }">
-		<c:url var="downloadUrl" value="/attach/FileDownload.do">
-			<c:param name="seqNo" value="${vo.seqNo }"></c:param>
-		</c:url>
-			<tr>
-				<td>
-					${vo.seqNo}
-					${vo.fileName}
-					${vo.saveSize}
-				</td>
-				<td>미리보기
-					<img alt="" src="${downloadUrl}" width="150px" height="150px">
-				</td>
-				<td>
-					<a href="${downloadUrl}">
-						다운로드
-					</a>
-				</td>
-			</tr>
-		</c:forEach>
-	</table>
+		}
+	</script>
+
+
+	<section class="item content">
+		<div class="container toparea">
+		
+			<div class="underlined-title">
+				<div class="editContent">
+					<h1 class="text-center latestitems">FREE BOARD</h1>
+				</div>
+				<div class="wow-hr type_short">
+					<span class="wow-hr-h"> <i class="fa fa-book"></i>
+					</span>
+				</div>
+			</div>
+		
+
+seqNo primary key
+type not null
+password 
+title not null
+contents 
+read_count default 0 not null
+user_ip not null
+del_at 'N'
+reg_user default 'guest' not null
+reg_date default sysdate
+upd_date default sysdate
+
+
+		</div>
+	</section>
+
 
 </body>
 </html>

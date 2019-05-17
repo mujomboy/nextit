@@ -49,7 +49,7 @@ order by upd_dt desc) tboard
 	</select>
 	
 	
-	<insert id="insertBoardInfo" parameterType="kr.or.nextit.board.service.BoardVo">
+	<insert id="insertBoardInfo" parameterType="kr.or.nextit.board.service.BoardVo" keyColumn="seq_no" keyProperty="seqNo" useGeneratedKeys="true">
 	
 	INSERT INTO tb_com_board (
 	    seq_no,

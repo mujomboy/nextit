@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,9 @@ import kr.or.nextit.board.service.BoardVo;
 @Service("BoardService")
 public class BoardServiceImpl implements BoardService{
 
+	private final Logger log = LoggerFactory.getLogger(this.getClass());
+
+	
 	@Autowired
 	private BoardMapper boardMapper;
 
@@ -30,9 +35,17 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public void insertBoardInfo(BoardVo boardVo) throws Exception {
+	public BoardVo insertBoardInfo(BoardVo boardVo) throws Exception {
 		
+		log.debug("boardVo : {}", boardVo);
+		log.debug("boardVo : {}", boardVo);
+		log.debug("boardVo : {}", boardVo);
 		boardMapper.insertBoardInfo(boardVo);
+		log.debug("boardVo : {}", boardVo);
+		log.debug("boardVo : {}", boardVo);
+		log.debug("boardVo : {}", boardVo);
+		
+		return boardVo;
 	}
 
 	@Override

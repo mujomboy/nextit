@@ -20,7 +20,7 @@
 
 <body>
 	
-<form action="/board/boardInsertProc.do" method="POST">
+<form action="/board/boardInsertProc.do" method="POST" enctype="multipart/form-data">
 	<table class="table">
 		<tbody>
 			<tr>
@@ -51,6 +51,18 @@
 					<textarea name="contents" rows="30" cols="80"></textarea>
 				</td>
 			</tr>
+			
+			<tr>
+				<td rowspan="3">첨부파일</td>
+				<td><input type="file" name="attachFiles"> </td>
+			</tr>
+			<tr>
+				<td><input type="file" name="attachFiles"> </td>
+			</tr>
+			<tr>
+				<td><input type="file" name="attachFiles"> </td>
+			</tr>
+					
 			<tr>
 				<th colspan="2">
 					<button type="submit">저장</button>

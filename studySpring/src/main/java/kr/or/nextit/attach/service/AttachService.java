@@ -17,4 +17,6 @@ public interface AttachService {
 			) throws Exception;
 	
 	List<AttachVo> selectFileList(String groupSeqNo) throws Exception;
+	
+	AttachVo selectFileInfo(int seqNo) throws Exception;
 }

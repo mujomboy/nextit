@@ -59,6 +59,7 @@ public class attachServiceImpl implements AttachService {
 				System.out.println(serverPath.toString());
 				
 				FileUtils.copyToFile(attach.getInputStream(), saveFile);
+				
 			}
 			
 			result.put("status", true);
@@ -79,6 +80,15 @@ public class attachServiceImpl implements AttachService {
 
 		List<AttachVo> list = attachMapper.selectFileList(groupSeqNo);
 		return list;
+	}
+
+	@Override
+	public AttachVo selectFileInfo(int seqNo) throws Exception {
+
+		attachMapper.updateFileInfoCnt(seqNo);
+		
+		AttachVo vo = attachMapper.selectFileInfo(seqNo);
+		return vo;
 	}
 	
 }
