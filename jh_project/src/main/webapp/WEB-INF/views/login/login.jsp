@@ -47,7 +47,7 @@
 									</a></th>
 								</tr>
 								<tr class="edd_cart_header_row">
-									<td><input class="edd-input" type="text" name="password"
+									<td><input class="edd-input" type="password" name="password"
 										placeholder="PASSWORD 입력"></td>
 								</tr>
 							</tbody>
@@ -59,6 +59,8 @@
 								style="color: red; font-size: 14px">${param.fail }</span>
 						</p>
 					</div>
+					
+					<input type="reset" id="reset_info" hidden="hidden">
 				</form>
 			</div>
 

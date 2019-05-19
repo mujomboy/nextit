@@ -40,12 +40,11 @@
 		});
 		
 		
-		
 		$("#fileVo").on("submit", function(e){
 			
 			e.preventDefault();
 			alert();
-			
+						
 			$(this).ajaxSubmit({
 				type :'post',
 				url : "/attach/ajaxFileUploadProc.json",

@@ -55,25 +55,36 @@
 			<div class="row text-center">
 				<div class="col-md-4">
 					<div class="col editContent" style="padding-top: 30px">
-						<a href="<c:url value='/board/freeBoardListView.do'/>" style="font-weight: bold; cursor:pointer;">자유 게시판</a>
+						<a href="<c:url value='/board//boardListView.do/0'/>" style="font-weight: bold; cursor:pointer;">자유 게시판</a>
 					</div>
-					<!-- /.col-md-4 -->
 				</div>
-				<!-- /.col-md-4 col -->
+				<div class="col-md-4">
+					<div class="col editContent" style="padding-top: 30px">
+						<a href="<c:url value='/board//boardListView.do/1'/>" style="font-weight: bold; cursor:pointer;">멤버 게시판</a>
+					</div>
+				</div>
 				<div class="col-md-4 editContent">
 					<div class="col">
-						<!-- <span class="numberstep"><i class="fa fa-gift"></i></span> -->
-						<h3 class="numbertext">기능2</h3>
-						<p>내용 들어가는 곳</p>
-					</div>
-					<!-- /.col -->
-				</div>
-				<!-- /.col-md-4 col -->
-				<div class="col-md-4 editContent">
-					<div class="col">
-						<!-- <span class="numberstep"><i class="fa fa-download"></i></span> -->
-						<h3 class="numbertext">기능 3</h3>
-						<p>내용 들어가는 곳</p>
+						create table project_one_freeboard(
+
+						    seqno number primary key,
+						    kind varchar(20) not null,
+						    pwd varchar(50),
+						    title varchar(300) not null,
+						    ctnt varchar(2000),
+						    read_count number default 0 not null,
+						    user_ip varchar(30) not null,
+						    del_at varchar(3) default 'N' not null,
+						    reg_user varchar(50) default 'guest' not null,
+						    reg_date date default sysdate not null,
+						    upd_date date default sysdate not null
+						);
+						
+						create sequence project_freeboard_seq
+						increment by 1
+						start with 1
+						nocache
+						nocycle;
 					</div>
 				</div>
 			</div>
@@ -255,9 +266,6 @@
 						<h2>
 							<span class="uppercase">Awesome Support</span>
 						</h2>
-						<img
-							src="http://wowthemes.net/demo/salique/salique-boxed/images/temp/avatar2.png"
-							alt="Awesome Support">
 						<p>The support... I can only say it's awesome. You make a
 							product and you help people out any way you can even if it means
 							that you have to log in on their dashboard to sort out any

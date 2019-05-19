@@ -1,12 +1,13 @@
-package kr.or.nextit.member.service;
+package kr.or.nextit.member.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.or.nextit.member.mapper.MemberMapper;
+import kr.or.nextit.member.service.MemberService;
 import kr.or.nextit.session.vo.LoginVo;
 
-@Service
+@Service("MemberService")
 public class MemberServiceImpl implements MemberService{
 
 	@Autowired

@@ -26,7 +26,6 @@
 		attachCenter(document.getElementsByTagName("title")[0].innerHTML);
 	</script>
 
-
 	<section class="item content">
 		<div class="container toparea">
 			<div class="underlined-title">

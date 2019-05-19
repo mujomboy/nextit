@@ -1,8 +1,6 @@
 package kr.or.nextit.login;
 
 import java.net.URLEncoder;
-import java.sql.Timestamp;
-import java.util.Date;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,11 +11,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import kr.or.nextit.login.service.LoginService;
 import kr.or.nextit.session.vo.LoginVo;
@@ -78,7 +74,7 @@ public class LoginController {
 	@RequestMapping(value="/signUpExc.do")
 	public String signUpExcute(
 			HttpServletRequest req,
-			@ModelAttribute LoginVo vo,
+			LoginVo vo,
 			Model model
 			) throws Exception {
 		
@@ -112,7 +108,6 @@ public class LoginController {
 	public boolean getDuplicationCheck(
 			@RequestParam HashMap<String, Object> params
 			) throws Exception {
-		
 		
 		String id = service.selectCheckId(params);
 		
