@@ -78,7 +78,9 @@ public class BoardController {
 		
 		log.info("검색 키워드 : {}", sv);
 		
+		
 		List<BoardVo> infoList = service.selectBoardListInfo(sv);
+		
 		log.info("검색 결과 : {}",infoList);
 		
 		return infoList;

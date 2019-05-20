@@ -57,7 +57,6 @@
 						
 					<table class="table">
 						<thead>
-						
 							<tr>
 								<th style="width: 10%">순번</th><th>제목</th><th style="width: 10%">조회수</th><th style="width: 10%">등록자</th>
 							</tr>

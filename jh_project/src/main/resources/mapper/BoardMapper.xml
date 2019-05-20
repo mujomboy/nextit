@@ -27,7 +27,7 @@
 
 <select id="selectBoardListInfo" parameterType="kr.or.nextit.vo.SearchVo" resultType="kr.or.nextit.board.vo.BoardVo">
 
-	SELECT
+	 <!--  SELECT
 	    seqno,
 	    kind,
 	    pwd,
@@ -41,8 +41,20 @@
 	    upd_date
 	FROM
 		<include refid="board_type"></include>
-		<include refid="search_list"></include>
+		<include refid="search_list"></include>  -->
 
+
+  	select *
+	from
+	    (select rownum num, board.*
+	    from
+	        (select *
+	        from  <include refid="board_type"></include>
+	        <include refid="search_list"></include>
+	        order by seqno) board
+	    ) 
+	where num between ${start} and ${end}
+	
 
 </select>
 
