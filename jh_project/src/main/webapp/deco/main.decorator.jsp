@@ -34,6 +34,11 @@
 
 <title><sitemesh:write property='title' /></title>
 
+<!-- <style type="text/css">
+	.container{
+	min-width: 1170px;
+} -->
+</style>
 </head>
 <body>
 
@@ -64,7 +69,6 @@
 								</c:url>
 								<li class="propClone"><a href="<c:url value="/member/myPageView.do"/>">마이페이지</a></li>
 								<li class="propClone"><a href="${logOut }">로그아웃</a></li>
-								${loginInfo }
 							</c:otherwise>
 						</c:choose>
 							

@@ -22,6 +22,7 @@
 <script type="text/javascript">
 "use strict"
 
+
 $(function(){
 	$('#btnMemberList').on("click", function(e){
 		
@@ -64,7 +65,6 @@ $(function(){
 });
 
 $(function(){
-
 	
 	$("#searchVo").submit(function(e) {
 		var e = e || window.Event;
@@ -72,6 +72,7 @@ $(function(){
 		
 		console.log($('#searchVo').serialize());
 		
+	
 		$.ajax('/json/memberListProc.json',{
 			method: "POST",
 			dataType: "json",

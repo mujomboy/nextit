@@ -127,9 +127,9 @@ function signUp(){
 			
 			email.val(email.val() == '' ? 'guest@info.com' : email.val());
 			
-			document.getElementById("edd_purchase_form").submit();
 			
-		
+			document.getElementById("edd_purchase_form").submit();
+			$('#reset_info').trigger('click');
 		}
 	});
 }
@@ -172,6 +172,7 @@ function login(){
 		// 전송
 		if(isHidden){
 			$('#edd_checkout_cart_form').submit();
+			$('#reset_info').trigger('click');
 		}
 	});
 }
@@ -230,5 +231,101 @@ function duplicationIdCheck(){
 
 
 
+
+// 범용 보드 세팅
+function setBoard(type){
+	
+	var kind = $('select[id=kind]');
+	var pass = $('input[name=pwd]');
+	
+	var len = 1;
+	var kinds;
+	
+	
+	if(type == 'GUEST'){
+		kinds = ["FREE"]; 
+	} else {
+		len = 3;
+		kinds = ["FAQ", "NOTICE", "DATA"];
+		if(pass != null) pass.attr("disabled", "disabled");
+	}
+	
+	for(var i = 0 ; i < len ; i++){
+		var op = document.createElement('option');
+		op.innerHTML = kinds[i];
+		kind.append(op);
+	}
+}
+
+// 보드 리스트 세팅
+function setBoardList(type){
+	
+	// 검색 클릭
+	$('input[id=search_btn]').click(function(){
+		
+		$.ajax('/board/searchBoardList.json', {
+			method : 'POST',
+			dataType: 'json',
+			data:  {
+				title : $('input[id=search_title]').val().trim(),
+				kind : $('#kind > option:selected').val()
+			},
+			success: function(data, status, xhr){
+				console.log(data);
+			},
+			error: function(){}
+			
+		});
+		
+	});
+}
+
+
+// 보드 글쓰기 세팅
+function setBoardWrite(type){
+	
+	// 글 등록 버튼
+	$('input[name=board_write_btn]').on("click", function(){
+		
+		var title = $('input[name=title]');
+		var content = $('input[name=ctnt]');
+		var pass = $('input[name=pwd]');
+		
+		var checkInfo = $('#check_info');
+		var checkInfoCon = $('#check_info_con');
+		
+		var isHidden = true;
+		
+		title.removeClass("error");
+		pass.removeClass("error");
+		
+		if(title.val().trim() == ''){
+			isHidden = false;
+			checkInfoCon.html("제목을 입력하세요");
+			title.addClass("error");
+			title.focus();
+		} else if((pass.val().trim() == '') && type == 'GUEST'){
+			isHidden = false;
+			checkInfoCon.html("비밀번호를 입력하세요");
+			pass.addClass("error");
+			pass.focus();
+		}
+		
+		console.log(pass);
+		
+		checkInfo.attr("hidden", isHidden);
+		checkInfoCon.attr("hidden", isHidden);
+		
+		
+		// 전송 조건 부합
+		if(isHidden){
+			
+			
+			document.getElementById("edd_purchase_form").submit();
+			$('#reset_info').trigger('click');
+		}
+		
+	});
+}
 
 

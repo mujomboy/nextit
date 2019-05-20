@@ -48,7 +48,7 @@
 								</label>
 								<a id="duplication_id" style="font-weight: bold; cursor:pointer;">중복검사</a>
 								<span id="duplication_con" style="font-size: 12px"></span>
-									
+								
 								 <input class="edd-input required" type="text" name="id" id="id"
 									placeholder="id 입력" value="" maxlength="20" >
 							</p>
@@ -72,7 +72,7 @@
 								<label class="edd-label" for="name"> NAME <span
 									class="edd-required-indicator">*</span>
 								</label> <input class="edd-input required" type="text" name="name"
-									placeholder="이름 입력" value="" id="name" maxlength="5">
+									placeholder="이름 입력" value="" id="name" maxlength="5" >
 							</p>
 
 							<p>
@@ -107,6 +107,7 @@
 									id="check_info_con" hidden="true"
 									style="color: red; font-size: 14px"></span>
 							</p>
+							<input type="reset" id="reset_info" hidden=''>
 							<input type="button" class="edd-submit button"
 								id="edd-purchase-button" name="signup_btn" value="회원가입">
 						</fieldset>
