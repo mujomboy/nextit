@@ -268,7 +268,9 @@ function setBoardList(type){
 			dataType: 'json',
 			data:  {
 				title : $('input[id=search_title]').val().trim(),
-				kind : $('#kind > option:selected').val()
+				kind : $('#kind > option:selected').val(),
+				start : "1",
+				end : "6"
 			},
 			success: function(data, status, xhr){
 				console.log(data);

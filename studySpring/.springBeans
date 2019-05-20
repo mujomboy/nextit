@@ -12,6 +12,7 @@
 		<config>src/main/webapp/WEB-INF/spring/context/properties-context.xml</config>
 		<config>src/main/webapp/WEB-INF/spring/context/messageSource-context.xml</config>
 		<config>src/main/webapp/WEB-INF/spring/context/file-context.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/context/scheduler-context.xml</config>
 	</configs>
 	<autoconfigs>
 		<config>src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml</config>

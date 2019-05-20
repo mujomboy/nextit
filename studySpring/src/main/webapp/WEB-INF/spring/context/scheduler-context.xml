@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:batch="http://www.springframework.org/schema/batch"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch-3.0.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<!-- ==================================================================================================== -->
+
+	<!-- 스케줄러에서 작업할 업무내역 -->
+	<bean name="testJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- ServiceImpl @Service 에서 선언한 이름 -->
+		<property name="targetObject" ref="TestSchedulerService"></property>
+		<!-- targetObject 메소드명 -->
+		<property name="targetMethod" value="getTestPrint"></property>
+	
+	</bean>
+	
+	
+	<!-- 스케쥴러가 작동될 시간 설정 -->
+	<bean id="testTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+		<!-- 스케줄러 작업 객체 -->
+		<property name="jobDetail" ref="testJobDetail"></property>
+		<!-- 서버 부팅후 시작할 시간 -->
+		<property name="startDelay" value="6000"></property>
+		<!-- 해당하는 객체의 메소드가 반복할 주기 -->
+		<property name="repeatInterval" value="1000"></property>
+	
+	</bean>
+	
+	<!-- ==================================================================================================== -->
+	<bean name="testCronJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="TestSchedulerService"></property>
+		<property name="targetMethod" value="getCronPrint"></property>
+	</bean>
+	
+	<bean name="testCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="testCronJobDetail"></property>
+		<property name="startDelay" value="5000"></property>
+		<!-- cronExpression 설정 = '초 분 시 일 월 년' 단위로 설정 -->
+		<property name="cronExpression" value="0/20 * * * * ?"></property>
+	</bean>
+	
+	
+	<bean name="testcountJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="TestSchedulerService"></property>
+		<property name="targetMethod" value="setBoardCount"></property>
+		<property name="concurrent" value="true"></property>
+	</bean>
+	
+	<bean name="testCountCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="testcountJobDetail"></property>
+		<property name="startDelay" value="5000"></property>
+		<!-- cronExpression 설정 = '초 분 시 일 월 년' 단위로 설정 -->
+		<property name="cronExpression" value="0/5 * * * * ?"></property>
+	</bean>
+	
+	
+ 	<!-- 초	분  	시 	일 	월 	년 -->
+	<!-- 0  0   12 	* 	* 	? 	매일 12시(정오) -->
+	<!-- 0  15  10 	? 	* 	* 	매일 오전 10시 15분 -->
+	<!-- 0  15  10 	* 	* 	? 	매일 오전 10시 15분 -->
+	<!-- 0  15  10 	* 	* 	?  	매일 오전 10시 15분 -->
+	<!-- 0  15  10 	* 	*  2005 2005년에 매일 아침 10시 15분 -->
+	<!-- 0  *   14 	* 	* 	? 	매일 오후 2시 0분 ~ 59분 -->
+	<!-- 0  0/5 14 	* 	* 	? 	매일 오후 2시부터 2시 55분까지 5분마다 -->
+	<!-- 0  0/5 14,18 * * 	? 	매일 오후 2시부터 2시 55분까지 5분마다, 6시부터 6시 55분까지 5분마다 -->
+	<!-- 0  0-5 14 	* 	* 	? 	매일 오후 2시부터 2시 5분까지 매분 -->
+	<!-- 0  10,44 14 ? 	3  WED 	매년 3월의 수요일마다 오후 2시 10분과 2시 44분 -->
+	<!-- 0  15 10 ? * MON-FRI 월요일부터 금요일까지 오전 10시 15분 -->
+	<!-- 0  15 10 15 * ? 매달 15일 오전 10시 15분 -->
+	<!-- 0  15 10 L * ? 매달 마지막 날 오전 10시 15분 -->
+	<!-- 0  15 10 ? * 6L 매달 마지막 금요일 오전 10시 15분 -->
+	<!-- 0  15 10 ? * 6L 2002-2005 2002년부터 2005년까지 매달 마지막 금요일 오전 10시 15분 -->
+	<!-- 0  15 10 ? * 6#3 매달 3번째 금요일 오전 10시 15분 -->
+	<!-- 0  0 12 1/5 * ? 매달 첫날부터 5일마다 12시(정오) -->
+	<!-- 0  11 11 11 11 ? 매년 11월 11일 오전 11시 11분 -->
+
+
+	<!-- ==================================================================================================== -->
+	
+	
+	<!-- 스프링 프레임워크에서 리스너로 작동 시길 factoryBean -->
+	<!-- 한번 실행되면 프레임워크가 종료될때까지 실행됨 -->
+	<bean id="testScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<!-- 자업 목록 triggers 목록을 등록, 여러개 등록 가능 -->
+		<property name="triggers">
+			<list>
+				<!-- trigger 에 등록된 시간에 따라서 작동됨 -->
+				<ref bean="testTrigger"/>
+				<ref bean="testCronTrigger"/>
+				<ref bean="testCountCronTrigger"></ref>
+			</list>
+		</property>
+	
+	</bean>
+</beans>
