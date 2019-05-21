@@ -58,6 +58,16 @@
 
 </select>
 
+
+<!--  총 갯수 구하기  -->
+<select id="selectBoardAmountItems" parameterType="kr.or.nextit.vo.SearchVo" resultType="int">
+
+	select count(*)
+	from <include refid="board_type"></include>
+	<include refid="search_list"></include>
+	
+</select>
+
 <insert id="insertBoardInfo" parameterType="kr.or.nextit.board.vo.BoardVo">
 
 	INSERT INTO 

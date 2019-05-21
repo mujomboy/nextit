@@ -29,4 +29,10 @@ public class BoardServiceImpl implements BoardService{
 		return mapper.selectBoardListInfo(vo);
 	}
 
+	@Override
+	public int selectBoardAmountItems(SearchVo vo) throws Exception {
+		
+		return mapper.selectBoardAmountItems(vo);
+	}
+
 }

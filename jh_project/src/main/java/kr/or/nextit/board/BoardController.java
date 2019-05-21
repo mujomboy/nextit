@@ -47,14 +47,10 @@ public class BoardController {
 			{"멤버 게시판", "MEMBER BOARD", "1"}
 	};
 	
-	// 게시판 리스트 세팅
+	// 게시판 세팅
 	private String setBoardListInfo(int type, Model model) throws Exception{
 		
 		log.info(listInfo[type][0] + " 이동");
-		
-		
-		// 글 가져 와야함
-		
 		
 		model.addAttribute("title",listInfo[type][0]);
 		model.addAttribute("who",writeInfo[type][1]);
@@ -84,6 +80,28 @@ public class BoardController {
 		log.info("검색 결과 : {}",infoList);
 		
 		return infoList;
+	}
+	
+	// 게시글 총 갯수 구하기
+	@ResponseBody
+	@RequestMapping("/amountItem.json")
+	public int amountItem(
+			@RequestParam HashMap<String, Object> params
+			) throws Exception {
+		
+		log.debug("게시글 총 수 조회");
+		
+		SearchVo sv = new SearchVo(params);
+		
+		log.info("검색 키워드 : {}", sv);
+
+		
+		int amount = service.selectBoardAmountItems(sv);
+		
+		log.info("검색 결과 : 총 아이템 갯수 {} 개",amount);
+
+		
+		return amount;
 	}
 	
 	

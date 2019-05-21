@@ -11,5 +11,7 @@ public interface BoardService {
 	
 	List<BoardVo> selectBoardListInfo(SearchVo vo) throws Exception;
 	
+	int selectBoardAmountItems(SearchVo vo) throws Exception;
+	
 	
 }
