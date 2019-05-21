@@ -11,6 +11,9 @@ public class SearchVo {
 	private int start;
 	private int end;
 	
+	public SearchVo() {}
+	public SearchVo(HashMap<String, Object> searchDatas) {setHashmap(searchDatas);}
+	
 	public void setHashmap(HashMap<String, Object> searchDatas) {
 		
 		

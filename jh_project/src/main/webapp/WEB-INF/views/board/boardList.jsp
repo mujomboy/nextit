@@ -23,17 +23,27 @@
 </head>
 <body>
 	<script>
+		'use strict'
+		
 		attachCenter(document.getElementsByTagName('title')[0].innerHTML);
 		window.onload = function() {
 			var type = document.getElementsByTagName("legend")[0].innerHTML;
 			setBoard(type);
 			
-			// 1. 자료 총 갯수 구하기
-			// 2. 페이징 세팅
-			// 3. 자료 가져 오기
-			setBoardList(type);
-			// 4. 자료 배치
+			/*
+				1. 검색 조건에 맞는 자료 갯수 구하기
+				2. 페이징 세팅
+				3. 검색 조건에 맞는 자료 구하기
+				4. 자료 배치
+			*/
+			len = 13;						// 페이지당 나열할 아이템 갯수
+			var page = 1;					// 시작 페이지 1
 			
+			// setList(len) -> paging() -> paging().setting -> paging.setPageItemFirstAndLast(page) ->
+			// searchItem(paging.getFirst(), paging.getLast(), s_title, s_kind) ->
+			setList(page, true);   
+			
+			setBoardList(true);					// 검색 버튼 세팅
 		}
 	</script>
 
@@ -69,6 +79,9 @@
 						</thead>
 						
 						<tbody>
+						
+						
+						
 						
 						</tbody>
 					</table>

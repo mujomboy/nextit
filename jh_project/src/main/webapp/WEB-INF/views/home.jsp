@@ -55,12 +55,12 @@
 			<div class="row text-center">
 				<div class="col-md-4">
 					<div class="col editContent" style="padding-top: 30px">
-						<a href="<c:url value='/board//boardListView.do/0'/>" style="font-weight: bold; cursor:pointer;">자유 게시판</a>
+						<a href="<c:url value='/board/boardListView.do/0'/>" style="font-weight: bold; cursor:pointer;">자유 게시판</a>
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="col editContent" style="padding-top: 30px">
-						<a href="<c:url value='/board//boardListView.do/1'/>" style="font-weight: bold; cursor:pointer;">멤버 게시판</a>
+						<a href="<c:url value='/board/boardListView.do/1'/>" style="font-weight: bold; cursor:pointer;">멤버 게시판</a>
 					</div>
 				</div>
 				<div class="col-md-4 editContent">

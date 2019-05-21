@@ -13,4 +13,6 @@ public interface BoardMapper {
 	void insertBoardInfo(BoardVo vo) throws Exception;
 	
 	List<BoardVo> selectBoardListInfo(SearchVo vo) throws Exception;
+	
+	int selectBoardAmountItems(SearchVo vo) throws Exception;
 }

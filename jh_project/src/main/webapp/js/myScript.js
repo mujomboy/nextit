@@ -257,31 +257,6 @@ function setBoard(type){
 	}
 }
 
-// 보드 리스트 세팅
-function setBoardList(type){
-	
-	// 검색 클릭
-	$('input[id=search_btn]').click(function(){
-		
-		$.ajax('/board/searchBoardList.json', {
-			method : 'POST',
-			dataType: 'json',
-			data:  {
-				title : $('input[id=search_title]').val().trim(),
-				kind : $('#kind > option:selected').val(),
-				start : "1",
-				end : "6"
-			},
-			success: function(data, status, xhr){
-				console.log(data);
-				testF();
-			},
-			error: function(){}
-			
-		});
-		
-	});
-}
 
 
 // 보드 글쓰기 세팅
