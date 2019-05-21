@@ -65,26 +65,7 @@
 				</div>
 				<div class="col-md-4 editContent">
 					<div class="col">
-						create table project_one_freeboard(
-
-						    seqno number primary key,
-						    kind varchar(20) not null,
-						    pwd varchar(50),
-						    title varchar(300) not null,
-						    ctnt varchar(2000),
-						    read_count number default 0 not null,
-						    user_ip varchar(30) not null,
-						    del_at varchar(3) default 'N' not null,
-						    reg_user varchar(50) default 'guest' not null,
-						    reg_date date default sysdate not null,
-						    upd_date date default sysdate not null
-						);
 						
-						create sequence project_freeboard_seq
-						increment by 1
-						start with 1
-						nocache
-						nocycle;
 					</div>
 				</div>
 			</div>
@@ -93,7 +74,7 @@
 
 
 
-
+<%-- 
 
 
 	<!-- LATEST ITEMS =============================-->
@@ -193,10 +174,10 @@
 		</div>
 		</div>
 	</section>
-
+ --%>
 
 	<!-- BUTTON =============================-->
-	<div class="item content">
+<!-- 	<div class="item content">
 		<div class="container text-center">
 			<a href="shop.html" class="homebrowseitems">Browse All Products
 				<div class="homebrowseitemsicon">
@@ -208,7 +189,7 @@
 	<br />
 
 
-	<!-- AREA =============================-->
+	AREA =============================
 	<div class="item content">
 		<div class="container">
 			<div class="row">
@@ -225,7 +206,7 @@
 						</p>
 					</div>
 				</div>
-				<!-- /.col-md-4 col -->
+				/.col-md-4 col
 				<div class="col-md-4">
 					<i class="fa fa-comments infoareaicon"></i>
 					<div class="infoareawrap">
@@ -238,7 +219,7 @@
 						</p>
 					</div>
 				</div>
-				<!-- /.col-md-4 col -->
+				/.col-md-4 col
 				<div class="col-md-4">
 					<i class="fa fa-bullhorn infoareaicon"></i>
 					<div class="infoareawrap">
@@ -255,10 +236,10 @@
 			</div>
 		</div>
 	</div>
+ -->
 
-
-	<!-- TESTIMONIAL =============================-->
-	<div class="item content">
+ <!-- TESTIMONIAL =============================-->
+	<!--	<div class="item content">
 		<div class="container">
 			<div class="col-md-10 col-md-offset-1">
 				<div class="slide-text">
@@ -277,7 +258,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 
 </body>
