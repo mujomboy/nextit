@@ -274,6 +274,7 @@ function setBoardList(type){
 			},
 			success: function(data, status, xhr){
 				console.log(data);
+				testF();
 			},
 			error: function(){}
 			

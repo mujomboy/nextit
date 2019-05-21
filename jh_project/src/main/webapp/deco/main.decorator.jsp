@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<script src="<c:url value="/js/myScrpit.js"/>"></script>
+<script src="<c:url value="/js/myScript.js"/>"></script>
 
 <!--  사이트 매쉬  hEAD                                       -->
 <!--  사이트 매쉬  hEAD                                       -->

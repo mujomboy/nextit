@@ -19,7 +19,7 @@
 
 <title>${title }</title>
 
-
+<script src="<c:url value="/js/boardScript.js"/>"></script>
 </head>
 <body>
 	<script>
@@ -27,7 +27,13 @@
 		window.onload = function() {
 			var type = document.getElementsByTagName("legend")[0].innerHTML;
 			setBoard(type);
+			
+			// 1. 자료 총 갯수 구하기
+			// 2. 페이징 세팅
+			// 3. 자료 가져 오기
 			setBoardList(type);
+			// 4. 자료 배치
+			
 		}
 	</script>
 
@@ -61,6 +67,7 @@
 								<th style="width: 10%">순번</th><th>제목</th><th style="width: 10%">조회수</th><th style="width: 10%">등록자</th>
 							</tr>
 						</thead>
+						
 						<tbody>
 						
 						</tbody>
