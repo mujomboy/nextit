@@ -18,6 +18,28 @@
 <meta name="author" content="kjh">
 
 <title>${title }</title>
+<style>
+	
+	.numberOver{
+		padding: 10px;
+		color: red;
+		font-size: 1.6em;
+		cursor: pointer;
+	}
+	.numberOut{
+		padding: 10px;
+		color: #777;
+		font-size: 1.5em;
+		cursor: pointer;
+	}
+	
+	.curPageNumber{
+		padding: 10px;
+		color: red;
+		font-size: 1.5em;
+		cursor: pointer;
+	}
+</style>
 
 <script src="<c:url value="/js/boardScript.js"/>"></script>
 </head>
@@ -74,16 +96,17 @@
 					<table class="table">
 						<thead>
 							<tr>
-								<th style="width: 10%">순번</th><th>제목</th><th style="width: 10%">조회수</th><th style="width: 10%">등록자</th>
+								<th style="width: 10%">순번</th><th style="width: 10%">종류</th><th>제목</th><th style="width: 10%">조회수</th><th style="width: 10%">등록자</th>
 							</tr>
 						</thead>
 						
 						<tbody>
 						
-						
-						
-						
+
 						</tbody>
+						<tfoot>
+							
+						</tfoot>
 					</table>
 						
 						
@@ -92,22 +115,8 @@
 					</a>
 			
 				</fieldset>
+				
 			</div>
-			
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-			
-
-			
 			
 			
 		</div>
