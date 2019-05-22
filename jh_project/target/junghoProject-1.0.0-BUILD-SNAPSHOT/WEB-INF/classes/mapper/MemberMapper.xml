@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.nextit.member.mapper.MemberMapper">
+
+
+<update id="updateMyPage" parameterType="kr.or.nextit.session.vo.LoginVo" flushCache="true" >
+
+
+	UPDATE project_one
+	SET
+	    p_name = #{name},
+	    p_age = #{age},
+	    p_phone = #{phone},
+	    p_email = #{email}
+	WHERE
+	    p_id = #{id}
+    
+</update>
+
+</mapper>

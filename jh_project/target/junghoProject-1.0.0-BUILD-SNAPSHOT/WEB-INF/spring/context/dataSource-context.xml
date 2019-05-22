@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+		
+		<!-- spring 환경설정 정보를 properties 파일 에서 읽어 옴 -->
+		<!-- 파일 경로, DB 연결정보, 매일 서버 연결 정보등 -->
+		<!-- 업무 시스템 에서 사용하는 정보를 공통 적으로 관리 하는 환경 설정 -->
+		<!-- ex) prod.driver, proc.url 등의 키 값과 value -->
+		<!-- 	 prod.driver=oracle -->
+		<!-- 	 prod.url=jdbc; -->
+		<context:property-placeholder location="classpath:/db.properties"/>
+		
+		<!-- 다중 커넥션사용시 기본적으로 사용할 Datasource 설정을 alias="dataSource" 로 사용 설정 -->
+		<alias name="spring.dataSource" alias="dataSource"/>
+		
+		<bean id="spring.dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+			<property name="driverClassName" value="${dev.driver}"></property>
+			<property name="url" value="${dev.url}"></property>
+			<property name="username" value="${dev.user}"></property>
+			<property name="password" value="${dev.password}"></property>
+		</bean>
+		
+		<bean id="dbcp2.dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+			<property name="driverClassName" value="${jdbc.driver}"></property>
+			<property name="url" value="${jdbc.url}"></property>
+			<property name="username" value="${jdbc.user}"></property>
+			<property name="password" value="${jdbc.password}"></property>
+			<!-- Pool 관련 설정 -->
+			<property name="validationQuery" value="select 1 from dual"></property>
+			<property name="maxTotal" value="300"></property>
+			<property name="maxIdle" value="5"></property>
+			<property name="minIdle" value="4"></property>
+			<property name="defaultAutoCommit" value="false"></property>
+		</bean>
+		
+		
+			<!-- 2019년 5월 13일  -->
+		<!-- 트랜잭션 메니저 등록 -->
+		<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+			<property name="dataSource" ref="spring.dataSource"></property>
+		</bean>
+		
+		<!--  트랜잭션 AOP 적용 -->
+		<tx:advice id="txAdvice" transaction-manager="transactionManager">
+			<tx:attributes>
+			
+				<!-- 모든 메소드에 Exception 에러가 발생하면 트랜잭션 적용 -->
+				<tx:method name="*" rollback-for="Exception"/>
+				
+				
+				<!-- 네이밍 룰에 적용되는 것만 트랜잭션 적용 -->
+				<tx:method name="select*" read-only="true"/>
+				<tx:method name="insert*" rollback-for="Exception"/>
+				<tx:method name="update*" rollback-for="Exception"/>
+				<tx:method name="delete*" rollback-for="Exception"/>
+				
+				
+				<tx:method name="put" rollback-for="Exception"/>
+				<tx:method name="set" rollback-for="Exception"/>
+			</tx:attributes>
+		</tx:advice>
+		
+		<aop:config>
+			<aop:pointcut expression="execution(public * kr.or.nextit..*(..))" id="servicePointCut"/>
+			<aop:pointcut expression="execution(public * kr.or.nextit.test..*(..))" id="servicePointCutTest"/>			
+			<aop:pointcut expression="execution(public * kr.or.nextit.test..impl.*(..))" id="servicePointCutDev"/>
+			
+			<aop:advisor advice-ref="txAdvice" pointcut-ref="servicePointCut"/>
+						
+		</aop:config>
+		
+		
+		<!-- Mybatis 설정 -->
+		<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+			<!-- MyBatis 환경설정 -->
+			<property name="configLocation" value="classpath:/spring-mybatis-config.xml"></property>
+			<!-- spring.DataSource 데이터 베이스 연결 객체를 사용 하겠다 -->
+			<property name="dataSource" ref="dataSource"></property>
+			<!-- 데이터 레이어 질의어(구현체) 작성, "mapper/파일명Mapper.xml" 파일을 읽어옴 -->
+			<property name="mapperLocations" value="classpath*:/mapper/*Mapper.xml"></property>
+		</bean>
+		
+		<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+			<constructor-arg ref="sqlSessionFactory"></constructor-arg>
+		</bean>
+		
+		<!-- Mapper Interface 등록 -->
+		<!-- mapper 스캔 시 어노테이션을 기준으로 스캔을 하겠다 -->
+		<mybatis-spring:scan base-package="kr.or.nextit" annotation="org.apache.ibatis.annotations.Mapper"/>
+</beans>

@@ -73,10 +73,10 @@
 						</c:choose>
 							
 							
-							<li class="propClone"><a href="/">임시</a></li>
-							<li class="propClone"><a href="product.html">Product</a></li>
-							<li class="propClone"><a href="checkout.html">Checkout</a></li>
-							<li class="propClone"><a href="contact.html">Contact</a></li>
+							<li class="propClone"><a href="<c:url value="/ing/ing.do"/>">공사중</a></li>
+							<li class="propClone"><a href="/">공사중</a></li>
+							<li class="propClone"><a href="/">공사중</a></li>
+							<li class="propClone"><a href="/">공사중</a></li>
 						</ul>
 					</div>
 				</div>
@@ -105,9 +105,8 @@
 					<div class="item"
 						data-scrollreveal="enter top over 0.4s after 0.1s">
 						<h1 class="callactiontitle">
-							Promote Items Area Give Discount to Buyers <span
-								class="callactionbutton"><i class="fa fa-gift"></i>
-								WOW24TH</span>
+							
+							로그인 유저 이름 : ${loginInfo != null ? loginInfo.name : "GUEST"} 
 						</h1>
 					</div>
 				</div>

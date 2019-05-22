@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.nextit.board.mapper.BoardMapper">
+
+<sql id="board_type">
+	<choose>
+		<when test="kind == 'FREE'"> project_one_freeboard </when>
+		<otherwise> project_one_memberboard </otherwise>
+	</choose>
+</sql>
+
+<sql id="search_list">
+	<where>
+		<foreach collection="map" item="search" index="idx">
+			<choose>
+				<when test="idx == 'kind'">
+					and ${idx} = #{search}
+				</when>
+				<otherwise>
+					and ${idx} like '%' || #{search} || '%'
+				</otherwise>
+			</choose>
+		</foreach>
+	</where>
+</sql>
+
+
+<select id="selectBoardListInfo" parameterType="kr.or.nextit.vo.SearchVo" resultType="kr.or.nextit.board.vo.BoardVo">
+
+	 <!--  SELECT
+	    seqno,
+	    kind,
+	    pwd,
+	    title,
+	    ctnt,
+	    read_count,
+	    user_ip,
+	    del_at,
+	    reg_user,
+	    reg_date,
+	    upd_date
+	FROM
+		<include refid="board_type"></include>
+		<include refid="search_list"></include>  -->
+
+
+  	select *
+	from
+	    (select rownum num, board.*
+	    from
+	        (select *
+	        from  <include refid="board_type"></include>
+	        <include refid="search_list"></include>
+	        order by seqno) board
+	    ) 
+	where num between ${start} and ${end}
+	
+
+</select>
+
+
+<!--  총 갯수 구하기  -->
+<select id="selectBoardAmountItems" parameterType="kr.or.nextit.vo.SearchVo" resultType="int">
+
+	select count(*)
+	from <include refid="board_type"></include>
+	<include refid="search_list"></include>
+	
+</select>
+
+<insert id="insertBoardInfo" parameterType="kr.or.nextit.board.vo.BoardVo">
+
+	INSERT INTO 
+		<include refid="board_type"></include> (
+	    seqno,
+	    kind,
+	    <if test="pwd != null"> pwd,</if>
+	    title,
+	    ctnt,
+	    user_ip,
+	    reg_user,
+	    reg_date,
+	    upd_date
+	) VALUES (
+		<choose>
+			<when test="kind == 'FREE'"> PROJECT_FREEBOARD_SEQ.nextval, </when>
+			<otherwise> PROJECT_MEMBERBOARD_SEQ.nextval, </otherwise>
+		</choose>
+	    #{kind},
+	    <if test="pwd != null"> #{pwd},</if>
+	    #{title},
+	    #{ctnt},
+	    #{userIp},
+	    #{regUser},
+	    sysdate,
+	    sysdate
+	)
+
+</insert>
+
+
+</mapper>

@@ -58,7 +58,7 @@
 				3. 검색 조건에 맞는 자료 구하기
 				4. 자료 배치
 			*/
-			len = 13;						// 페이지당 나열할 아이템 갯수
+			len = 15;						// 페이지당 나열할 아이템 갯수
 			var page = 1;					// 시작 페이지 1
 			
 			// setList(len) -> paging() -> paging().setting -> paging.setPageItemFirstAndLast(page) ->
@@ -96,7 +96,7 @@
 					<table class="table">
 						<thead>
 							<tr>
-								<th style="width: 10%">순번</th><th style="width: 10%">종류</th><th>제목</th><th style="width: 10%">조회수</th><th style="width: 10%">등록자</th>
+								<th style="width: 10%">순번</th><th style="width: 10%;">종류</th><th>제목</th><th style="width: 10%">조회수</th><th style="width: 10%">등록자</th>
 							</tr>
 						</thead>
 						

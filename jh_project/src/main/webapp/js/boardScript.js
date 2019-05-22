@@ -187,19 +187,21 @@ function setItemChart(data){
 	
 	var str = '';
 	
+	
 	for(var i in data){
 		
 		var tempStr = '';
 		tempStr = '<tr>';
 		tempStr += '<td>'+ data[i].num + '</td>';
 		tempStr += '<td>'+ data[i].kind + '</td>';
-		tempStr += '<td>'+ data[i].title + '</td>';
+		tempStr += '<td><a href="" style="cursor:pointer;">'+ data[i].title + '</a></td>';
 		tempStr += '<td>'+ data[i].readCount + '</td>';
 		tempStr += '<td>'+ data[i].regUser + '</td>';
 		tempStr += '</tr>';
 		
 		str = tempStr + str;
 	}
+	
 	
 	body.append(str);
 	

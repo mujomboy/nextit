@@ -37,7 +37,7 @@
 <body>
 
 	<script>
-		attachMain("PROJECT", "HOMEPAGE");
+		attachMain("MAIN", "HOMEPAGE");
 	</script>
 	
 	

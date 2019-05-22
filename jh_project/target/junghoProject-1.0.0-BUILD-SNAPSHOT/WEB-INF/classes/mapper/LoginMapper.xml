@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.nextit.login.mapper.LoginMapper">
+
+	<select id="selectLoginInfo" parameterType="HashMap" resultType="kr.or.nextit.session.vo.LoginVo">
+		
+		SELECT
+		    p_id id,
+		    p_password password,
+		    p_name name,
+		    p_age age,
+		    p_phone phone,
+		    p_email email,
+		    p_ip ip,
+		    p_reg_date regDate
+		FROM
+		    project_one
+		where
+		    p_id = #{id}
+		and p_password = #{password}
+
+	</select>
+	
+	<select id="selectCheckId" parameterType="HashMap" resultType="String">
+	
+			SELECT
+			    p_id
+			FROM
+			    project_one
+			where
+			    p_id = #{id}
+	</select>
+
+	<insert id="insertLoginInfo"
+		parameterType="kr.or.nextit.session.vo.LoginVo">
+
+		INSERT INTO project_one (
+			seqno,
+			p_id,
+			p_password,
+			p_name,
+			p_age,
+			p_phone,
+			p_email,
+			p_reg_date,
+			p_ip
+		) VALUES (
+			project_seq.nextval,
+			#{id},
+			#{password},
+			#{name},
+			#{age},
+			#{phone},
+			#{email},
+			sysdate,
+			#{ip}
+		)
+	</insert>
+
+
+
+
+</mapper>
